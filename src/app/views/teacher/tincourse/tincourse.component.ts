@@ -1,0 +1,43 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpRequestService } from '../../../services/http-request.service';
+import { Router, NavigationExtras } from '@angular/router'
+@Component({
+  selector: 'app-tincourse',
+  templateUrl: './tincourse.component.html',
+  styleUrls: ['./tincourse.component.css']
+})
+export class TincourseComponent implements OnInit {
+  public course_id: any;
+  public cname: any;
+
+
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    public httpRequest: HttpRequestService,
+    private router: Router,
+  ) {
+    activatedRoute.queryParams.subscribe(queryParams => {
+      this.course_id = queryParams.cid;
+    });
+
+  }
+
+  getC() {
+    this.httpRequest.httpGet("course_basic_info", { "course_id": this.course_id }).subscribe((val: any) => {
+      if (val.message == "failure") {
+        //失败
+      } else {
+        this.cname = val.course_name;
+      }
+    })
+
+  }
+
+  ngOnInit(): void {
+    this.getC();
+  }
+
+
+}

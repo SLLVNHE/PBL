@@ -1,0 +1,30 @@
+<!-- <div class="navbar"> -->
+<ul>
+    <div class="left">
+    <li id="H1"><head>PBL系统</head></li>
+    <li class="nav" id="tag1"><a>主页</a></li>
+    <li class="nav" id="tag2" [routerLink]="['/pblshome/scourses']" routerLinkActive="router-link-active"><a>课程</a></li>
+</div>
+<div class="dropdown">
+    <a id="bella" [routerLink]="['/pblshome/messagebox']" ><i id="bellui" class=" pi pi-bell"></i>
+        <span id="bellnum" *ngIf="num > 0">
+            <span id="bellnum2">
+                {{num}}</span>
+        </span>
+        <!-- <span id="bellnum">3</span> -->
+    </a>
+</div>
+    <div class="dropdown">
+    
+
+        <img [src]="image" class={{val1}}>
+        <a class="dropbtn"><span>{{name}}</span></a>
+        <div class="dropdown-content">
+            <a [routerLink]="['/pblshome/user']" routerLinkActive="router-link-active" ><i class="pi pi-fw pi-home"></i>个人中心</a>
+            <a (click)="quit()"> <i class="pi pi-fw pi-times"></i>退出</a>
+         
+        </div>
+    </div>
+</ul>
+
+<!-- </div> -->

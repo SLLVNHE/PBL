@@ -1,0 +1,59 @@
+<div class="content">
+
+    <p>新增用户</p>
+    <div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+        
+            <div class="user">
+               <span>用户邮箱：</span>
+                        <input type="email" name="email" formControlName="loginEmail"
+                            pattern="^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+.[a-zA-Z]{2,4}$"
+                            pInputText placeholder="用户邮箱" required />
+                   
+            </div>
+            <div *ngIf="loginForm.get('loginEmail').invalid && (loginForm.get('loginEmail').dirty || loginForm.get('loginEmail').touched)"
+                class="errors">
+        
+                <small *ngIf="loginForm.get('loginEmail').errors.required">
+                    请填写邮箱！
+                </small>
+                <small *ngIf="loginForm.get('loginEmail').errors.pattern">
+                    请填写正确的邮箱地址！
+                </small>
+            </div>
+            <!-- <small *ngIf="!message">aaaaaaaaa</small> -->
+        
+        
+            <div class="user">
+                <span>用户密码：</span>
+                        <input type="password" pPassword formControlName="loginPsd" maxlength="18" minlength="6"
+                            pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*])[\da-zA-Z~!@#$%^&*]{6,18}$" placeholder="密码" />
+        
+            </div>
+            <div *ngIf="loginForm.get('loginPsd').invalid && (loginForm.get('loginPsd').dirty || loginForm.get('loginPsd').touched)"
+                class="errors">
+        
+                <small *ngIf="loginForm.get('loginPsd').errors.required">
+                    请填写密码！
+                </small>
+                <small *ngIf="loginForm.get('loginPsd').errors.pattern">
+                    请填写正确格式的密码（6-18位字母数字字符）！
+                </small>
+            </div>
+        
+        
+          
+            <button id="but1" pButton type="submit" [disabled]="!loginForm.valid" label="新建"
+                class="ui-button-rounded"></button>
+           
+
+           
+            <button id="but2" pButton type="button" label="取消" class="ui-button-rounded " (click)="cancel()"></button>
+        </form>
+    </div>
+
+
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>
+

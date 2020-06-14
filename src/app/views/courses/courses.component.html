@@ -1,0 +1,23 @@
+<div class="boximg">
+    <img src="../../../assets/images/nav.jpg">
+</div>
+<div class="box">
+    <div class="left">
+        <div class="leftbox">
+            <ul>
+                <li id="title"><span>课程管理</span></li>
+                <li class="content"><a [routerLink]="['/pblshome/scourses/uncourselist']" routerLinkActive="router-link-active">开放课程</a></li>
+                <li class="content"><a [routerLink]="['/pblshome/scourses/courselist']" routerLinkActive="router-link-active" >我的课程</a></li>
+                
+
+               
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <div class="rightbox">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>

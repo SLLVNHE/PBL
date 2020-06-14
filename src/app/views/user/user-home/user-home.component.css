@@ -1,0 +1,112 @@
+.content {
+    
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 800px;
+    height: 500px;
+
+    /* background-color: #fafafa; */
+    border: 0.5px solid #e7e7e7;
+}
+
+.title{
+    text-align: left;
+    padding-left: 3em;
+    line-height: 71px;
+    font-size: 16px;
+    color:  #00a1d7;
+     border-bottom:  1px solid #e7e7e7;
+}
+
+.user{
+    display: flex;
+     text-align: left;
+     padding-left: 3em;
+     margin-top: 1em;
+    line-height: 45px;
+    font-size: 16px;
+    color: #99a2aa;
+}
+span{
+     white-space: nowrap
+  }
+   img{
+     border-radius: 40px;
+     width:80px;
+     height:80px;
+     margin-top: 0.3em;;
+     /* padding-top: 8px; */
+  }
+  .imga{
+    border:  5px solid #00a1d6;
+    /* border-color: #00a1d6; */
+
+  }
+  .imgb{
+     border:  5px solid pink;
+   /* border-color: pink; */
+  }
+
+  #name{
+      margin-left: 1.5em;
+      margin-bottom: 3em;
+     font-size: 20px;
+    font-weight: 700;
+    color: #222;
+  }
+
+  #namea{
+    border: 1px solid #99a2aa;
+    margin: 0 8px;
+    color: #99a2aa;
+    border-radius: 4px;
+    font-size: 12px;
+      
+  }
+
+  #imgbox{
+      float: left;
+  }
+  #namebox{
+      float: left;
+      width: 70%;
+  }
+
+  ::ng-deep .ui-progressbar{
+   width: 18em;
+   margin-left: 2em;
+   margin-top: 0.7em;
+ 
+}
+
+#infobox{
+    display: flex;
+}
+
+#customProgress{
+    float: left;
+}
+
+#info{
+   margin-left: 8em;
+}
+
+#infoa{
+    padding-top: 0;
+    color: #99a2aa;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid #ced3db;
+}
+
+#infoa:hover{
+    color: #ff905a;
+    border: 2px solid #ced3db;
+
+}
+
+#customProgress ::ng-deep  .ui-progressbar .ui-progressbar-value {
+    background:  #ff905a;
+}
+

@@ -1,0 +1,208 @@
+
+
+.content {
+   
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 1100px;
+    min-height: 600px;
+
+   
+    border: 0.5px solid #e7e7e7;
+}
+p{
+   
+    padding-left: 3em;
+    line-height: 68px;
+    font-size: 22px;
+    color:  #00a1d7;
+     border-bottom:  1px solid #e7e7e7;
+
+}
+
+.noc{
+    padding-left: 3em;
+    padding-top: 0em;
+    line-height: 37px;
+    font-size: 18px;
+}
+
+.put a{
+    cursor:pointer;
+    color: #00a1d7;
+}
+.put1, .put{
+    padding-left: 4em;
+   
+    
+}
+
+.ui-card-shadow{
+    margin-left: 2em;
+}
+table{
+   margin-top: 2em;
+    margin-left: 1em;
+  /* background-color: #fafafa; */
+}
+
+
+td{
+   
+    padding-left: 1em;
+    padding-top: 2em;
+     display: flex;
+     
+      width:1000px;
+}
+
+#avimg{
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+}
+
+.page{
+   width: 100%;
+ 
+  bottom: 0em;
+    width: 100%;
+    justify-content: center;
+    /* margin-left: 1.3em; */
+}
+
+::ng-deep .ui-paginator{
+   width: 100%;
+   /* margin-left: 3em; */
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+
+ :ng-deep > .ui-paginator > .ui-paginator-current{
+         margin-left: -10em;
+}
+
+
+
+button{
+    width: 10em;
+    margin-left: 2em;
+    background-color: #00a1d7;
+}
+
+#but2{
+    margin-left: 35em;
+}
+input,textarea{
+    width: 300px;
+    
+}
+
+input, textarea{
+    font-size: 1em;
+    font-weight: 100;
+    width: 92%;
+    display: block;
+    border: none;
+    padding: 1em;
+    border-bottom: solid 1px #ffffff;
+    -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #fff 4%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #fff 4%);
+    background-position: -800px 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: #000000;
+}
+
+textarea{
+    height: 10em;
+}
+
+input::placeholder, textarea::placeholder{
+    columns: #000000;;
+}
+
+small{
+   color: #000000;
+    
+    font-size: 1em;
+}
+
+.postbox{
+    display: flex;
+     
+      width: 100%;
+}
+
+.postl{
+   
+    text-align:center;
+    vertical-align:middle;
+    width: 10%;
+    float: left;
+     
+}
+
+.postr{
+   width: 90%;
+     
+}
+
+.user{
+     text-align: left;
+     padding-left: 1em;
+     /* margin-top: 1em; */
+    line-height: 40px;
+    color: #99a2aa;
+    
+}
+#name1{
+    font-size: 18px;
+   
+}
+#time{
+    margin-left: 5em;
+    font-size: 10px;
+}
+
+#title{
+    text-align: left;
+    line-height: 30px;
+    font-size: 20px;
+    color:  #00a1d7;
+     
+}
+
+#dianzan, #huifu{
+     font-size: 13px;
+}
+
+#dianzan{
+    margin-left: 2em;
+}
+
+#huifu{
+    float: right;
+    margin-right: 3em;
+}
+
+#dianzan a,#huifu a{
+     cursor:pointer;
+     color: #7a9e31;
+}
+
+.con{
+     min-height: 10em;
+     text-align: left;
+     padding-left: 1em;
+     /* margin-top: 1em; */
+    line-height: 40px;
+    color: #99a2aa;
+   
+}
+
+

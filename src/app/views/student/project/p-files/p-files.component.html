@@ -1,0 +1,55 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i> 文件管理</span></div>
+    <div>
+
+
+        <table>
+            <tr id="start">
+                <th class="start">文件</th>
+                <th class="next">上传时间</th>
+                <th class="end">上传者</th>
+                <th class="end2">操作</th>
+            </tr>
+            <tr *ngFor="let item of files">
+                <td class="start">
+                    {{item.file_name}}
+                </td>
+                <td class="next">
+                    {{item.upload_time | date:'yyyy-MM-dd'}}
+                </td>
+                <td class="end">
+                    {{item.upload_username}}
+                </td>
+                <td class="end2">
+                    <a (click)="download(item.file_id)"><i class="pi pi-pencil"></i>下载</a>
+                    <a (click)="delete_file(item.file_id)" *ngIf="sid == item.upload_userId"><i class="pi pi-pencil"></i>删除</a>
+                </td>
+            </tr>
+           
+
+        </table>
+
+
+
+
+
+    </div>
+
+    <div class="filebox">
+
+   
+    <p-fileUpload name="file" customUpload="true" accept="application/pdf" maxFileSize="1024000000"
+        invalidFileSizeMessageSummary="{0}：无效的文件大小" (uploadHandler)="myUploader($event)" (onUpload)="onUpload($event)"
+        (onBeforeSend)="onBeforeSend($event)" chooseLabel="我要上传" uploadLabel="上传" cancelLabel="取消">
+    
+    
+        <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+            </ul>
+        </ng-template>
+    </p-fileUpload>
+ </div>
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>

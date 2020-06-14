@@ -1,0 +1,37 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i> 课程项目</span></div>
+    <div>
+
+
+        <table>
+            <tr id="start">
+                <th class="start">项目名称</th>
+                <th class="next">项目简介</th>
+                <th class="end">项目时间</th>
+                <th class="end2">操作</th>
+            </tr>
+            <tr *ngFor="let item of plist">
+                <td class="start">
+                    {{item.name}}
+                </td>
+                <td class="next">
+                    {{item.introduce}}
+                </td>
+                <td class="end">
+                    {{item.start_time | date:'yyyy-MM-dd'}}--{{item.end_time | date:'yyyy-MM-dd'}}
+                </td>
+                <td class="end2">
+                    <a><i class="pi pi-plus"></i>添加</a>
+                </td>
+            </tr>
+          
+        </table>
+
+
+
+
+
+    </div>
+
+
+</div>

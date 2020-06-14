@@ -1,0 +1,33 @@
+<div class="boximg">
+    <img id="nav" src="../../../assets/images/nav.jpg">
+</div>
+<div class="box">
+    <div class="left">
+        <div class="leftbox">
+            <ul>
+                <li id="title">
+                    <img id="cimg" src="../../../assets/images/110404-152108304476cb.jpg">
+                    <span>{{cname}}</span>
+                </li>
+                <!-- <li class="content"><a [routerLink]="['/pblshome/user/userhome']"
+                        routerLinkActive="router-link-active"><i class="pi pi-fw pi-home"></i>首页</a></li> -->
+                <li class="content"><a [routerLink]="['/teacherhome/teacherc/details']" [queryParams]="{cid: course_id}"
+                        routerLinkActive="router-link-active"><i class="pi pi-align-justify"></i>课程详情</a></li>
+                <!-- <li class="content"><a [routerLink]="['/teacherhome/teacherc/pjlist']" [queryParams]="{cid: course_id}"
+                        routerLinkActive="router-link-active"><i class="pi pi-fw pi-file"></i>课程项目</a></li> -->
+                <li class="content"><a [routerLink]="['/teacherhome/teacherc/mypjlist']" [queryParams]="{cid: course_id}"
+                        routerLinkActive="router-link-active"><i class="pi pi-fw pi-calendar"></i>项目列表</a></li>
+        <li class="content"><a [routerLink]="['/teacherhome/teacherc/createpj']" [queryParams]="{cid: course_id}"
+                routerLinkActive="router-link-active"><i class="pi pi-fw pi-plus"></i>新增项目</a></li>
+                <li class="content"><a [routerLink]="['/teacherhome/teacherc/member']" [queryParams]="{cid: course_id}"
+                        routerLinkActive="router-link-active"><i class="pi pi-users"></i>人员名单</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <div class="rightbox">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>

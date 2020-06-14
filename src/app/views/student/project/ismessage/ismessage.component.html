@@ -1,0 +1,76 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i> 我的信息</span></div>
+    <div>
+<table>
+    <tr id="start">
+         
+        <th class="end">未读消息{{num}}封</th>
+        <th class="start"></th> 
+        <th class="next"></th>
+      
+        <th class="end2"></th>
+         
+    </tr>
+    <tr *ngFor="let item of messages">
+        <td class="start">
+          <i class="pi pi-envelope"></i>
+        </td> 
+        <td class="end">
+           {{item.superviseUserName}}
+        </td>
+        <td class="next">
+           {{item.time | date:'M/d/yy, h:mm a '}}
+        </td>
+       
+        <td class="end2">
+          
+            <a [routerLink]="['/pblshome/messagebox/seemessage']" [queryParams]="{uid:item.superviseUserId, isRead:item.isRead, tid:item.taskId}"
+                routerLinkActive="router-link-active"><i class="pi pi-arrow-circle-right"></i>查看</a>
+        
+        </td>
+    </tr>
+    <tr id="start">
+    
+        <th class="end">已读消息</th>
+        <th class="start"></th>
+        <th class="next"></th>
+    
+        <th class="end2"></th>
+    
+    </tr>
+    <tr *ngFor="let item of readmessage">
+        <td class="start">
+            <i class="pi pi-envelope"></i>
+        </td>
+        <td class="end">
+            {{item.superviseUserName}}
+        </td>
+        <td class="next">
+            {{item.time | date:'M/d/yy, h:mm a '}}
+        </td>
+    
+        <td class="end2">
+            <a (click)="delect(item.superviseUserId, item.taskId )" style="cursor: pointer;">删除</a>/
+    
+            <a [routerLink]="['/pblshome/messagebox/seemessage']"
+                [queryParams]="{uid:item.superviseUserId, isRead:item.isRead, tid:item.taskId}"
+                routerLinkActive="router-link-active">查看</a>
+    
+        </td>
+    </tr>
+
+
+</table>
+
+
+
+
+
+    </div>
+
+    <router-outlet></router-outlet>
+   
+
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>

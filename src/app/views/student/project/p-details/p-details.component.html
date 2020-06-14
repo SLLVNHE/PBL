@@ -1,0 +1,33 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i> 项目详情</span></div>
+    <div>
+
+        <div class="user" id="start">
+            <span class="k">项目名称：</span>
+            <span>{{project_name}}</span>
+        </div>
+
+     
+        <div class="user">
+            <span class="k">项目时间：</span>
+
+            <span>{{start_time | date:'yyyy-MM-dd'}} --- {{end_time | date:'yyyy-MM-dd'}}</span>
+        </div>
+        <div class="user">
+            <span class="k">项目简介：</span>
+            <span>{{introduce}}</span>
+        </div>
+        <div class="user">
+            <span class="k">评分占比：</span>
+            <span class="k">教师评分：{{teacher_proportion}}%；</span>
+            <span class="k">学生自评：{{self_proportion}}%；</span>
+            <span class="k">学生互评：{{mutual_proportion}}%</span>
+        </div>
+        <div class="user">
+            <span class="k">我的身份：</span>
+            <span class="k">{{Id}}</span>
+        </div>
+
+    </div>
+
+</div>

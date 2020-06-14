@@ -1,0 +1,54 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i>我的任务</span></div>
+    <div >
+        <span class="eventlist">
+            <a (click)="see()" style="cursor:pointer;"> 任务列表</a>
+        </span>
+    </div>
+    <div *ngIf="see1">
+        <table>
+            <tr id="start">
+                <th class="start">任务</th>
+                <th class="next">简介</th>
+                <th class="end">时间</th>
+                <th class="end2">等级</th>
+                <th class="end3">完成情况</th>
+            </tr>
+            <tr *ngFor="let item of tasks">
+                <td class="start">
+                    {{item.task_name}}
+                </td>
+                <td class="next">
+                    {{item.importance}}
+                </td>
+                <td class="end">
+                    {{item.start_time | date:'M/d/yy, h:mm a '}} ---- {{item.end_time | date:'M/d/yy, h:mm a '}}
+                </td>
+                <td class="end2" >
+                   {{item.importance}}
+                </td>
+                <td class="end3" *ngIf="item.is_accomplished">
+                    已完成
+                </td>
+                <td class="end3" *ngIf="!item.is_accomplished">
+                    <a (click)="com(item.task_id)" style="cursor: pointer;"><i class="pi pi-pencil"></i>标记完成</a>
+                </td>
+               
+            </tr>
+        
+        </table>
+    </div>
+
+    <div *ngIf="isDataAvailable" class="full">
+
+
+    <p-fullCalendar [events]="events" [options]="options"></p-fullCalendar>
+
+
+
+    </div>
+
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>
+

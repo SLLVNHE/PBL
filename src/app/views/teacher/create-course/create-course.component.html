@@ -1,0 +1,53 @@
+<div class="content">
+
+    <p>新建课程</p>
+    <div class="addtask">
+        <form [formGroup]="creatcForm" (ngSubmit)="onSubmit()">
+    
+    
+            <div class="taskc">
+                <span>课程名称</span><input name="taskname" formControlName="taskname" required placeholder="课程名称">
+            </div>
+    
+            <div class="taskc">
+                <span>课程简介</span><textarea placeholder="课程简介" name="taskcon" formControlName="taskcon" required></textarea>
+            </div>
+            <div class="taskc">
+                <span>*结束时间应大于开始时间 </span>
+            </div>
+            <div class="taskc">
+                <span>开始时间</span>
+                <p-calendar class="v" name="start" formControlName="start" [showIcon]="true"  required [(ngModel)]="st"
+                    [readonlyInput]="true" [minDate]="minDateValue"></p-calendar>
+            </div>
+            <div class="taskc">
+                <span>结束时间</span>
+                <p-calendar class="v" name="end" formControlName="end" [showIcon]="true" required [(ngModel)]="en"
+                    [readonlyInput]="true" [minDate]="minDateValue2"></p-calendar>
+            </div>
+
+            
+            <div class="taskc">
+                <span>上传课程背景图</span>
+               <input type="file" name="file" formControlName="file" required accept="image/png,image/gif">
+            </div>
+           
+            <div class="task2">
+                <button id="but1" pButton type="button" type="submit" label="发布" class="ui-button-rounded"
+                    [disabled]="!creatcForm.valid || (en <st)"></button>
+                <button id="but2" pButton type="button" label="取消" class="ui-button-rounded" (click)="clean()"></button>
+            </div>
+    
+        </form>
+    
+    
+    
+    
+    
+    
+    </div>
+
+
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>

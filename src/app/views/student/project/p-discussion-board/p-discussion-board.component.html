@@ -1,0 +1,114 @@
+<div class="content">
+
+    <p><i class="pi pi-fw pi-tags"></i>讨论板</p>
+    <div class="noc" *ngIf="posts.length <= 0">
+        <span id="noc"><i class="pi pi-exclamation-circle"></i>暂无讨论</span>
+    </div>
+    <div class="put" *ngIf="x1"><a (click)="change()"><i class="pi pi-fw pi-plus"></i>新建讨论</a></div>
+    <div class="put1" *ngIf="x2">
+      
+       <form [formGroup]="putdisForm" (ngSubmit)="onSubmit()">
+        <input  name="postname" formControlName="postname"  id="input1"
+                        pInputText placeholder="讨论话题" required />
+    <div *ngIf="putdisForm.get('postname').invalid && (putdisForm.get('postname').dirty || putdisForm.get('postname').touched)"
+        class="errors">
+        <small *ngIf="putdisForm.get('postname').errors.required">
+            请填写话题！
+        </small>
+    </div>
+         <textarea type="text" pInputTextarea name="content" formControlName="postcontent" placeholder="讨论内容"></textarea>
+        <div *ngIf="putdisForm.get('postcontent').invalid && (putdisForm.get('postcontent').dirty || putdisForm.get('postcontent').touched)"
+            class="errors">
+
+            <small *ngIf="putdisForm.get('postcontent').errors.required">
+                请填写内容！
+            </small>
+        </div>
+         <div>
+        <button id="but1" pButton type="button" type="submit" label="发布" class="ui-button-rounded " [disabled]="!putdisForm.valid" ></button>
+        <button id="but2" pButton type="button" label="取消"  class="ui-button-rounded "  (click)="cancel()"></button>
+         </div>
+       
+       </form>
+    
+    </div>
+    
+    
+
+  
+    <table >
+
+        <tr *ngFor="let item of posts">
+            <td >
+
+              
+                   <div class="postl">
+                       <img id="avimg" src="http://118.190.235.55/"{{item.avatar}} >
+                   </div>
+                   <div class="postr">
+                       <div class="user"><span id="name1">{{item.student_name}}</span><span id="time">{{item.post_time | date:'M/d/yy, h:mm a '}}</span></div>
+                       <div class="user"><span id="title">{{item.post_name}}</span></div>
+                       <div class="con"><span id="con">{{item.content}}</span></div>
+                       <div >
+                            
+                            <a *ngIf="see1" (click)="seeup(item.post_id)"><i class="pi pi-chevron-down"></i></a>
+                        <table *ngIf="see2">                       
+                            <tr *ngFor="let item2 of replies">
+                                <td>
+                        
+                                    <div class="postl">
+                                        <img id="avimg" src="http://118.190.235.55/" {{item2.avatar}}>
+                                    </div>
+                                    <div class="postr">
+                                        <div class="user"><span id="name1">{{item2.student_name}}</span><span
+                                                id="time">{{item2.reply_time | date:'M/d/yy, h:mm a '}}</span></div>
+                                        <div class="con"><span id="con">{{item2.reply_content}}</span></div>    
+                                    </div>
+                        
+                                </td>
+                            </tr>                       
+                        </table>
+                        <a *ngIf="see3" (click)="seedown()"><i class="pi pi-chevron-up"></i></a>
+
+                       </div>
+                       <div class="user">
+                           <span id="dianzan" *ngIf="item.liked"><a><i class="pi pi-star"  (click)="zan(item.post_id)"></i>点赞{{item.likes}}</a></span>
+                            <span id="dianzan" *ngIf="item.liked"><a><i class="pi pi-star-o" (click)="zan(item.post_id)"></i>点赞{{item.likes}}</a></span>
+                           <span id="huifu"><a (click)="hu1()"><i class="pi pi-comment"></i>回复</a></span></div>
+                        <form *ngIf="hu" [formGroup]="replyForm" (ngSubmit)="onSubmit1(item.post_id)">
+                            <textarea type="text" pInputTextarea name="content" formControlName="replycontent" placeholder="讨论内容"></textarea>
+                            <!-- <div *ngIf="putdisForm.get('postcontent').invalid && (putdisForm.get('postcontent').dirty || putdisForm.get('postcontent').touched)"
+                                class="errors">
+                        
+                                <small *ngIf="putdisForm.get('postcontent').errors.required">
+                                    请填写内容！
+                                </small>
+                            </div> -->
+                            <div>
+                                <button id="but1" pButton type="button" type="submit" label="回复" class="ui-button-rounded "
+                                    [disabled]="!replyForm.valid"></button>
+                                <button id="but2" pButton type="button" label="取消" class="ui-button-rounded " (click)="cancel2()"></button>
+                            </div>
+                        
+                        </form>
+
+                   </div>
+              
+            </td>
+        </tr>
+
+
+    </table>
+  
+    <div class="page" *ngIf="posts.length > 0">
+        <p-paginator (onPageChange)="onPage($event)" styleClass="pagin" [rows]="5" [totalRecords]="total"
+            pageLinkSize="5" [showCurrentPageReport]="true"
+            currentPageReportTemplate="显示讨论板{totalRecords}条记录中的{first}到{last}">
+        </p-paginator>
+
+    </div>
+
+
+
+</div>
+

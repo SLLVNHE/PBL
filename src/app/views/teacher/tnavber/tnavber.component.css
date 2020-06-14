@@ -1,0 +1,139 @@
+
+
+ ul{
+    /* list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden; */
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      /* border-top:2.5px solid #e7e7e7; */
+    border-bottom:2.5px solid #e7e7e7;
+      display: flex;
+       /* border: 2.5px solid #e7e7e7;; */
+      justify-content: space-between;
+      /* align-items: center; */
+
+  }
+  .left, li, .dropdown{
+     /* width:auto; */
+    margin:0;
+    padding:0;
+   
+    
+    display: inline-flex;
+    /* border: 2.5px solid #e7e7e7;; */
+  }
+ 
+  .left{
+    width: 100%;
+    display: flex;
+  }
+  
+  li a, .dropbtn
+  {
+     
+    color: #000000;
+    text-align:center;
+    padding:18px 16px;
+    text-decoration:none;
+  }
+
+
+ li head{
+    /* display:inline-block; */
+
+    display: inline-flex;
+    color: #00a1d6;
+    text-align:center;
+   
+    text-decoration:none;
+    font-style:italic;
+    font-weight:bold;
+     padding:12px 16px;
+    font-size:25px;
+    /* line-height:30px; */
+    font-family:“SimHei”;
+
+  }
+ #H1{
+    margin-left: 5%;
+}
+#tag1{
+    margin-left: 8%;
+}
+#tag2{
+    margin-left: 1%;
+} 
+  /* li a:hover, .dropdown:hover, .dropbtn:hover */
+  
+  li a:hover
+  {
+    background-color:#00a1d6;
+    color: white;
+  }
+  
+  .dropdown
+  {     
+   margin-right: 3%;
+    position: relative;
+   
+  }
+  
+  span{
+     white-space: nowrap
+  }
+  .dropdown-content
+  {
+    display:none;
+    position:absolute;
+    margin-top: 56.8px;
+    margin-left: -2.5em;
+
+    background-color:#f9f9f9;
+    /* min-width: 200px; */
+    box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
+ 
+  }
+  
+  .dropdown-content a
+  {
+    color:black;
+    padding:12px 16px;
+    text-decoration:none;
+    display:block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  .dropdown:hover .dropdown-content
+  {
+    display:block;
+  }
+
+  i{
+      color:#00a1d6 ;
+  }
+
+  img{
+     border-radius: 25px;
+     width:50px;
+     height:50px;
+     margin-top: 0.3em;;
+     /* padding-top: 8px; */
+  }
+  .imga{
+    border:  5px solid #00a1d6;
+    /* border-color: #00a1d6; */
+
+  }
+  .imgb{
+     border:  5px solid pink;
+   /* border-color: pink; */
+  }
+  .router-link-active{
+    /* color:  #00a1d7; */
+    background-color:  #00a1d7;;
+    color: white;
+}

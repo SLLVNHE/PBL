@@ -1,0 +1,96 @@
+<div class="content">
+    <div class="title">
+        <span><i class="pi pi-fw pi-tags"></i>项目任务</span>
+    </div>
+    <div class="noc" *ngIf="tasks.length <= 0">
+        <span id="noc"><i class="pi pi-exclamation-circle"></i>暂无任务</span>
+    </div>
+    <span id="addtask" *ngIf="add2"><a (click)="add()"><i class="pi pi-fw pi-plus"></i>添加任务</a></span>
+    <div class="addtask" *ngIf="add1">
+        <form  [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+       
+            <div class="taskc">
+                <span>主题</span><input  name="taskname" formControlName="taskname" required placeholder="任务主题">
+            </div>
+
+            <div class="taskc">
+                <span>内容</span><textarea placeholder="任务内容" name="taskcon" formControlName="taskcon" required></textarea>
+            </div>
+           <div class="taskc">
+            <span>开始时间</span>
+            <p-calendar  class="v" name="start" formControlName="start" [showIcon]="true" [showTime]="true" 
+               required [readonlyInput]="true"></p-calendar>
+           </div>
+          <div class="taskc">
+            <span>结束时间</span>
+            <p-calendar  class="v" name="end" formControlName="end" [showIcon]="true" [showTime]="true" required 
+                [readonlyInput]="true"></p-calendar>
+          </div>
+          <div class="taskc">
+              <span>等级</span>
+            <p-rating name="import" formControlName="import" iconCancelClass="pi pi-times"></p-rating>
+          </div>
+          <div class="task1">
+              <span>指派人员{{selected}}</span>
+            <p-multiSelect [options]="member" formControlName="selected" scrollHeight="400px" ></p-multiSelect>
+          </div>
+          <div class="task2">
+                <button id="but1" pButton type="button"  type="submit" label="发布" class="ui-button-rounded" [disabled]="!taskForm.valid" 
+                   ></button>
+                <button id="but2" pButton type="button" label="取消" class="ui-button-rounded" (click)="clean()"></button>
+          </div>
+
+       </form>
+       
+        
+        
+        
+      
+
+    </div>
+    <div *ngIf="add2">
+
+
+        <table>
+            <tr id="start">
+                <th class="start">任务</th>
+                <th class="next">简介</th>
+                <th class="end">时间</th>
+                <th class="end2">操作</th>
+            </tr>
+            <tr *ngFor="let item of tasks">
+                <td class="start">
+                   {{item.task_name}}
+                </td>
+                <td class="next">
+                   {{item.importance}}
+                </td>
+                <td class="end">
+                   {{item.start_time | date:'M/d/yy, h:mm a '}} ---- {{item.end_time | date:'M/d/yy, h:mm a '}}
+                </td>
+                <td class="end2" *ngIf="role == 0">
+                    <a [routerLink]="['/pblshome/studentp/seetasks']" [queryParams]="{pid: pid, leader:Identity, tid:item.task_id}"
+                    routerLinkActive="router-link-active"><i class="pi pi-arrow-circle-right"></i>查看</a>
+                   
+                </td>
+                <td class="end2" *ngIf="role == 1">
+                    <a [routerLink]="['/teacherhome/teacherp/seetasks']" [queryParams]="{pid: pid, leader:Identity, tid:item.task_id}"
+                        routerLinkActive="router-link-active"><i class="pi pi-arrow-circle-right"></i>查看</a>
+                
+                </td>
+            </tr>
+           
+        </table>
+
+
+
+
+
+    </div>
+
+<router-outlet></router-outlet>
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>
+

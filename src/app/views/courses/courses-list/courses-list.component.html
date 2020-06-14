@@ -1,0 +1,50 @@
+<div class="content">
+
+<p>我的课程</p>
+<div class="noc" *ngIf="x.length <= 0">
+<span id="noc"><i class="pi pi-exclamation-circle"></i>暂无课程</span>
+</div>
+<table >
+   
+    <tr *ngFor="let item of x">
+        <td *ngFor="let i of item" >
+          
+            <p-card  header={{i.course_name}} subheader={{i.teacher_name}} [style]="{width: '350px'}"
+                styleClass="ui-card-shadow">
+                <p-header>
+                    <img src="Card" src="http://118.190.235.55/{{i.background_image}}">
+                </p-header>
+                <div>{{i.description}}
+                </div>
+                <div>
+                    {{i.start_time | date:'yyyy-MM-dd'}} ----{{i.end_time | date:'yyyy-MM-dd'}}
+                </div>
+                <p-footer>
+                    <button pButton type="button" label="进入课堂" (click)="in(i.course_id)"  icon="pi pi-sign-in" style="margin-right: .25em"></button>
+                    <!-- <button pButton type="button" label="" icon="pi pi-times" class="ui-button-secondary"></button> -->
+                </p-footer>
+            </p-card>
+        </td>
+    </tr>
+   
+       
+ </table>
+
+   
+    <div class="page" *ngIf="x.length > 0">
+        <p-paginator 
+        (onPageChange)="onPage($event)"
+        styleClass="pagin" 
+        [rows]="9" 
+        [totalRecords]="total"
+         pageLinkSize="5" 
+         [showCurrentPageReport]="true"
+         currentPageReportTemplate="显示我的课程{totalRecords}条记录中的{first}到{last}">
+     </p-paginator>
+       
+    </div>
+     
+         
+   
+</div>
+ 

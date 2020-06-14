@@ -1,0 +1,56 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i> 我的头像</span></div>
+    <div class="imgc">
+        <!-- <img [src]='userimg | safeResourceUrl'> -->
+     <img [src]="userimg" >
+    </div>
+
+    <div class="user">
+
+        <!-- <button pButton type="button" label="保存" class="ui-button-raised" (click)="setinfo('top')"></button> -->
+    </div>
+        <!-- <p-fileUpload 
+            name="avatar" 
+            url="http://localhost:4200/api/modify_avatar"  
+           [headers]='headers'
+            (onUpload)="onUpload($event)" 
+          
+          
+            accept="image/*"
+            maxFileSize="204800" 
+            invalidFileSizeMessageSummary="{0}：无效的文件大小"
+            chooseLabel="修改头像" 
+            uploadLabel="上传" 
+            cancelLabel="取消">
+            <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload> -->
+
+
+
+        <p-fileUpload 
+        name="avatar" 
+        customUpload="true" 
+        accept="image/*" 
+        maxFileSize="204800"
+         invalidFileSizeMessageSummary="{0}：无效的文件大小"
+        (uploadHandler)="myUploader($event)" 
+        (onUpload)="onUpload($event)" 
+        (onBeforeSend)="onBeforeSend($event)"
+         chooseLabel="修改头像" 
+            uploadLabel="上传" 
+            cancelLabel="取消">
+        
+        
+        <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload>
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>

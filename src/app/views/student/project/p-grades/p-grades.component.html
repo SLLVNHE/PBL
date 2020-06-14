@@ -1,0 +1,29 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i>我的成绩</span></div>
+    <div class="noc" *ngIf="status != 1">
+        <span id="noc"><i class="pi pi-exclamation-circle"></i>成绩未开放</span>
+    </div>
+    <div *ngIf="status == 1">
+
+        <div class="user">
+            <span class="k">教师评分：</span>
+
+            <span>{{teacher_grade}}</span>
+        </div>
+        <div class="user">
+            <span class="k">学生自评：</span>
+            <span>{{self_grade}}</span>
+        </div>
+       
+        <div class="user">
+            <span class="k">学生互评：</span>
+            <span class="k">{{mutual_grade}}</span>
+        </div>
+        <div class="user">
+            <span class="k">总成绩：</span>
+            <span class="k">{{grade}}</span>
+        </div>
+
+    </div>
+
+</div>

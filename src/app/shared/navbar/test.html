@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>文件下载</title>
+</head>
+
+<body>
+    <!-- 注意下文件路径，移到了file文件中 -->
+    <a href="http://www.baidu.com">百度</a>
+
+    <a href="./hyper-Setup-2.0.0.exe">命令行工具</a>
+    <a href="./files/txt.txt" download>下载记事本</a>
+    <!--最好压缩一下-->
+    <a href="./files/dream.txt" download>下载图片</a>
+    <button id="btn">下载</button>
+    <script>
+        //防止别人抓取页面的资源。可以用脚本处理
+        let btn = document.querySelector('#btn');
+        console.log(btn);
+        btn.onclick = function () {
+            const link = document.createElement('a');
+            link.href = 'txt.txt';
+            link.download = '文件1.txt'; //下载
+            link.click();//进行点击时下载
+
+
+        }
+        //拓展
+        const str = '回忆小浪漫';
+        downLoadFile('dream.doc', str, 'application/msword');
+        downLoadFile('dream.txt', str, 'text/plain');
+        function downLoadFile(filename, content, type) {
+            const blob = new Blob([content], { type: type });//创建一个blob对象
+            const url = window.URL.createObjectURL(blob);//获取url
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename; //下载的文件名
+            link.click();
+
+
+        }
+
+        // 首先命名一个对象
+        var x  = [];
+            var Handsome = {};
+
+            // 然后获取属性名和属性值
+            var name = "姓名";
+            var val = "林杨";
+
+            var age = "年龄";
+            var val2 = 18;
+
+            // 将属性赋给对象
+            Handsome[name] = val;    // 利用方括号添加属性名和值
+            Handsome[age] = val2;
+            Handsome["laber"] = "aaa"
+            x.push(Handsome);
+
+            // 打印该对象查看输出
+            console.log(Handsome);
+            console.log(x)
+            var data = new Date(1589299211111);
+            console.log(data);
+    </script>
+</body>
+
+</html>

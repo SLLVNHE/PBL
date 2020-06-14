@@ -1,0 +1,26 @@
+<div class="boximg">
+    <img src="../../../assets/images/nav.jpg">
+</div>
+<div class="box">
+    <div class="left">
+        <div class="leftbox">
+            <ul>
+                <li id="title"><span>人员管理</span></li>
+                
+                <li class="content"><a [routerLink]="['/adminhome/manage/alist']"
+                        routerLinkActive="router-link-active">用户列表</a></li>
+                <li class="content"><a [routerLink]="['/adminhome/manage/acreate']"
+                        routerLinkActive="router-link-active">新增用户</a></li>
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <div class="rightbox">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>
+

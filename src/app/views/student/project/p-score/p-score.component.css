@@ -1,0 +1,91 @@
+.content {
+    
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    min-height: 600px;
+    margin-bottom: 2em;
+
+    /* background-color: #fafafa; */
+    border: 0.5px solid #e7e7e7;
+}
+
+.title{
+    text-align: left;
+    padding-left: 3em;
+    line-height: 90px;
+    font-size: 20px;
+    color:  #00a1d7;
+     border-bottom:  1px solid #e7e7e7;
+}
+
+.user{
+     text-align: left;
+     padding-left: 2em;
+     /* margin-top: 1em; */
+    line-height: 45px;
+    font-size: 16px;
+    color: #99a2aa;
+    border-bottom:  1px solid #e7e7e7;
+    
+}
+
+
+table{
+    
+     text-align: center;
+     /* padding-left: 2em; */
+     /* margin-top: 1em; */
+    line-height: 45px;
+    font-size: 16px;
+    color: #99a2aa;
+    border-bottom:  1px solid #e7e7e7;
+}
+
+
+#start{
+     color: #000;
+   
+}
+
+table tr th, table tr td{
+      border-bottom:  1px solid #e7e7e7;  
+}
+
+.start{
+    width: 15em;
+   
+}
+
+.next{
+     width: 30em;
+    
+}
+.end{
+     width: 14em; 
+}
+.end2{
+     width: 6em;
+}
+input, textarea{
+    font-size: 1em;
+    font-weight: 100;
+    width: 92%;
+    display: block;
+    border: none;
+    padding: 1em;
+    border-bottom: solid 1px #000000;
+    -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #fff 4%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #fff 4%);
+    background-position: -800px 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: #000000;
+}
+a{
+    cursor: pointer;
+}

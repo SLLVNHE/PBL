@@ -1,0 +1,43 @@
+.content {
+    
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 800px;
+    height: auto;
+    min-height: 600px;
+
+    /* background-color: #fafafa; */
+    border: 0.5px solid #e7e7e7;
+}
+
+.title{
+    text-align: left;
+    padding-left: 3em;
+    line-height: 90px;
+    font-size: 20px;
+    color:  #00a1d7;
+     border-bottom:  1px solid #e7e7e7;
+}
+
+.user{
+     text-align: left;
+     padding-left: 4em;
+     margin-top: 1em;
+    line-height: 45px;
+    font-size: 16px;
+    color: #99a2aa;
+}
+
+#start{
+    margin-top: 3em;
+}
+
+#seer{
+    float: right;
+    margin-right: 3em;
+}
+#seer a{
+    cursor:pointer;
+     color: #00a1d7;
+}

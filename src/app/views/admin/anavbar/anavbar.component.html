@@ -1,0 +1,22 @@
+<ul>
+    <div class="left">
+        <li id="H1">
+
+            <head>PBL系统</head>
+        </li>
+        <li class="nav" id="tag1" [routerLink]="['/adminhome/manage']" routerLinkActive="router-link-active"><a>管理</a></li>
+        <!-- <li class="nav" id="tag2" [routerLink]="['/teacherhome/tcourses']" routerLinkActive="router-link-active">
+            <a>课程</a>
+        </li> -->
+    </div>
+    <div class="dropdown">
+        <img [src]="image" class={{val1}}>
+        <a class="dropbtn"><span>{{name}}</span></a>
+        <div class="dropdown-content">
+            <a [routerLink]="['/pblshome/user']" routerLinkActive="router-link-active"><i
+                    class="pi pi-fw pi-home"></i>个人中心</a>
+            <a (click)="quit()"> <i class="pi pi-fw pi-times"></i>退出</a>
+
+        </div>
+    </div>
+</ul>

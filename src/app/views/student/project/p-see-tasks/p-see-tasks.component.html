@@ -1,0 +1,43 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i>查看任务</span>
+        <span  *ngIf="role == 0" id="seer"><a [routerLink]="['/pblshome/studentp/pjlist']" [queryParams]="{pid: pid, leader:Identity}"
+            routerLinkActive="router-link-active"><i class="pi pi-fw pi-arrow-left"></i>返回</a></span>
+        <span *ngIf="role == 1" id="seer"><a [routerLink]="['/teacherhome/teacherp/pjlist']" [queryParams]="{pid: pid, leader:Identity}"
+                routerLinkActive="router-link-active"><i class="pi pi-fw pi-arrow-left"></i>返回</a></span>
+    </div>
+    <div>
+
+
+        <table>
+            <tr id="start">
+                <th class="start">学生</th>
+                <th class="next">完成情况</th>
+                <th class="end2">操作</th>
+            </tr>
+            <tr *ngFor="let item of member">
+                <td class="start">
+                    {{item.student_name}}
+                </td>
+                <td class="next" *ngIf="item.accomplished == 0">
+                    未完成
+                </td>
+                <td class="next" *ngIf="item.accomplished == 0">
+                   完成
+                </td>
+                <td class="end2" *ngIf="item.accomplished == 0">
+                    <a (click)="urge(item.student_id)"><i class="pi pi-bell"></i>督促</a>
+                </td>
+            </tr>
+           
+
+        </table>
+
+
+
+
+
+    </div>
+
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>

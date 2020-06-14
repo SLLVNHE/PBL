@@ -1,0 +1,53 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i>小组成员</span></div>
+    <div>
+
+
+        <table>
+            <tr id="start">
+                <th class="start">姓名</th>
+                <th class="next">项目</th>
+                <th class="end">身份</th>
+                <th class="end2">操作</th>
+            </tr>
+            <tr *ngFor="let item of leader">
+                <td class="start">
+                    {{item.student_name}}
+                </td>
+                <td class="next">
+                    {{pname}}
+                </td>
+                <td class="end">
+                    组长
+                </td>
+                <td class="end2">
+                    <a>已选择</a>
+                </td>
+            </tr>
+            <tr *ngFor="let item of member">
+                <td class="start">
+                    {{item.student_name}}
+                </td>
+                <td class="next">
+                    {{pname}}
+                </td>
+                <td class="end">
+                    组员
+                </td>
+                <td class="end2">
+                    <a (click)="select(item.student_id)"><i class="pi pi-user-plus"></i>选为组长</a>
+                </td>
+            </tr>
+
+        </table>
+
+
+
+
+
+    </div>
+
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>
+

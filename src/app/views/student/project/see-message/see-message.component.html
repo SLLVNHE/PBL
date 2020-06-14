@@ -1,0 +1,40 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i> 查看信息</span>
+      <span id="seer"><a [routerLink]="['/pblshome/messagebox/noread']" 
+            routerLinkActive="router-link-active"><i class="pi pi-fw pi-arrow-left"></i>返回</a></span>
+    </div>
+  
+    <div>
+        <div class="user" id="start">
+            <span class="k">发件人：{{name}}</span>
+            
+        </div>
+        
+        
+        <div class="user">
+            <span class="k">时间：{{time |date:'M/d/yy, h:mm a ' }}</span>
+        
+           
+        </div>
+        <div class="user">
+          
+            <span> 
+                已选课程--{{cname}}发来消息：
+
+            </span>
+            <div>
+                项目：{{pname}}中的任务{{tname}}还未完成，请尽快完成，以免影响成绩。            
+            </div>
+        </div>
+        
+
+
+    </div>
+
+
+
+
+
+</div>
+
+

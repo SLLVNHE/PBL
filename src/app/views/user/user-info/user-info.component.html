@@ -1,0 +1,50 @@
+<div class="content">
+   <div class="title"><span><i class="pi pi-fw pi-tags"></i> 我的信息</span></div>
+   <div>
+      
+    <div class="user">
+        <span class="k">用户名：</span>
+        <span id="name">{{email}}</span>
+    </div>
+    <div class="user">
+        <span class="k">昵称：</span>
+        <input class="v" id='nick' placeholder={{nickname}} [(ngModel)]="nickname" maxlength="30">
+        <span class="k">*限30字符</span>
+        
+    </div>
+    <div class="user">
+        <span class="k" id="qian">我的签名：</span>
+       
+        <textarea pInputTextarea  placeholder={{signature}} [(ngModel)]="signature" maxlength="60"></textarea>
+        <span>*限60字符</span>
+    </div>
+    <div class="user">
+        <span class="k">性别：</span>
+        
+                <p-radioButton class="v" id="g1" name="group1" value="男" label="男" [(ngModel)]="val1" inputId="opt1">
+                </p-radioButton>
+           
+                <p-radioButton  class="v" id="g2" name="group1" value="女" label="女" [(ngModel)]="val1" inputId="opt2">
+                </p-radioButton>
+            
+        
+    </div>
+    <div class="user">
+        <span class="k">出生日期：</span>
+        <p-calendar  placeholder={{birthday}} class="v" [(ngModel)]="birthday" [showIcon]="true" dateFormat="yy.mm.dd"  [readonlyInput]="true"></p-calendar>
+
+    </div>
+
+
+
+
+
+
+</div>
+<div class="user">
+     <button pButton type="button" label="保存" class="ui-button-raised" (click)="setinfo('top')" ></button>
+</div>
+     
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>

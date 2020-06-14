@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i> 课程详情</span></div>
+    <div>
+
+        <div class="user" id="start">
+            <span class="k">课程名称：</span>
+            <span>{{cname}}</span>
+        </div>
+    
+        <div class="user">
+            <span class="k">任课教师：</span>
+            <span class="k">{{cteacher_name}}</span>
+        </div>
+        <div class="user">
+            <span class="k">开课时间：</span>
+
+            
+            <span>{{cstart_time| date:'yyyy-MM-dd'}} --- {{cend_time| date:'yyyy-MM-dd'}}</span>
+           
+        </div>
+        <div class="user">
+            <span class="k">课程简介：</span>
+            <span>{{cdescription}}</span>
+        </div>
+
+    </div>
+   
+
+</div>
+<!-- <p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog> -->

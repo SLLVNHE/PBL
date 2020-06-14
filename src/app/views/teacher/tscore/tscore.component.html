@@ -1,0 +1,84 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i>项目成绩</span></div>
+    <div>
+        <table>
+            <tr id="start">
+                <th class="start">姓名</th> 
+                <th class="end">教师评分</th>
+                <th class="end">学生自评</th>
+                <th class="end">学生互评</th>
+                 <th class="end">总分</th>
+                <th class="end2">操作</th>
+            </tr>
+            <tr *ngFor="let item of scores">
+                <td class="start">
+                    {{item.username}}
+                </td>
+                 <td class="end">
+                     <span *ngIf="item.teacher_grade == -1">*暂未给出</span>
+                     <span *ngIf="item.teacher_grade != -1"> {{item.teacher_grade}}</span>
+               
+                </td>
+                <td class="end">
+                    <span *ngIf="item.self_grade == -1">*暂未给出</span>
+                    <span *ngIf="item.self_grade != -1"> {{item.self_grade}}</span>
+                   
+                </td>
+                <td class="end">
+                    <span *ngIf="item.mutual_grade == -1">*暂未给出</span>
+                    <span *ngIf="item.mutual_grade != -1"> {{item.mutual_grade}}</span>
+                  
+                </td>
+                <td class="end">
+                    <span *ngIf="item.grade == -1">*暂未给出</span>
+                    <span *ngIf="item.grade != -1"> {{item.grade}}</span>
+                   
+                </td>
+               
+                <td class="end2">
+                    <a *ngIf="item.teacher_grade != -1" ><i class="pi pi-pencil"></i>已评分</a>
+                    <a *ngIf="item.teacher_grade == -1" (click)="showBasicDialog(item.user_id)"><i class="pi pi-pencil"></i>评分</a>
+                    <a  (click)="showBasicDialog(item.user_id)">a</a>
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+    <div *ngIf="scores.length > 0">
+        <button id="but2" pButton type="button" label="发布成绩" class="ui-button-rounded" (click)="publish()"></button>
+    </div>
+
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>
+
+<!-- <button type="button" (click)="showBasicDialog()" pButton icon="pi pi-external-link" label="Show"></button> -->
+<p-dialog header="评分" [(visible)]="displayBasic" [style]="{width: '40vw'}" [baseZIndex]="10000">
+    <form [formGroup]="creatcForm" >    
+        <div class="taskc">
+            <span>项目名称</span>
+            <input  name="taskname" formControlName="taskname"  pattern="^100$|^(\d|[1-9]\d)(\.\d+)*$"
+            required placeholder="输入成绩" >
+        </div>    
+        <div *ngIf="creatcForm.get('taskname').invalid  && (creatcForm.get('taskname').dirty || creatcForm.get('taskname').touched)"
+            class="errors">
+        
+            <small *ngIf="creatcForm.get('taskname').errors.required">
+                成绩不能为空！
+            </small>
+            <small *ngIf="creatcForm.get('taskname').errors.pattern">
+                0-100的数字！
+            </small>
+        </div>
+       
+    
+    </form>
+    
+    <p-footer>
+        <button type="button" pButton icon="pi pi-check" [disabled]="!creatcForm.valid"
+         (click)="apple()" (click)="displayBasic=false" label="确定"></button>
+        <button type="button" pButton icon="pi pi-times" (click)="clean()" (click)="displayBasic=false" label="取消"
+            class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
+

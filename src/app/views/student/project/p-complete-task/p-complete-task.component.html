@@ -1,0 +1,33 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i> 任务详情</span></div>
+    <div>
+
+        <div class="user" id="start">
+            <span class="k">任务名称：</span>
+            <span>{{task_name}}</span>
+        </div>
+
+
+        <div class="user">
+            <span class="k">任务时间：</span>
+
+            <span>{{start_time | date:'yyyy-MM-dd'}} --- {{end_time | date:'yyyy-MM-dd'}}</span>
+        </div>
+        <div class="user">
+            <span class="k">任务等级：</span>
+            <span>{{importance}}</span>
+        </div>
+       
+        <div class="user">
+            <span class="k">完成情况：</span>
+            <span class="k" *ngIf="is_accomplished">已完成</span>
+            <span class="k" *ngIf="!is_accomplished">未完成</span>
+        </div>
+        <div *ngIf="!is_accomplished">
+            <button id="but2" pButton type="button" label="标记完成" class="ui-button-rounded" (click)="complished()"></button>
+        </div>
+
+    </div>
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>

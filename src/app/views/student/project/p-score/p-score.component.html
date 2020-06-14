@@ -1,0 +1,86 @@
+<div class="content">
+    <div class="title"><span><i class="pi pi-fw pi-tags"></i>项目评分</span></div>
+    <div>
+
+
+        <table>
+            <tr id="start">
+                <th class="start">姓名</th>
+                <th class="next">项目</th>
+                <th class="end">身份</th>
+                <th class="end2">操作</th>
+            </tr>
+            <tr *ngFor="let item of leader">
+                <td class="start">
+                    {{item.student_name}}
+                </td>
+                <td class="next">
+                    {{pname}}
+                </td>
+                <td class="end">
+                    组长
+                </td>
+                <td class="end2">
+                <a *ngIf="item.student_id != id" (click)="showBasicDialog(item.student_id)"><i class="pi pi-pencil"></i>互评</a>
+                <a *ngIf="item.student_id == id" (click)="showBasicDialog(item.student_id)"><i class="pi pi-pencil"></i>自评</a>
+                </td>
+            </tr>
+            <tr *ngFor="let item of member">
+                <td class="start">
+                    {{item.student_name}}
+                </td>
+                <td class="next">
+                    {{pname}}
+                </td>
+                <td class="end">
+                    组员
+                </td>
+                <td class="end2">
+                <a *ngIf="item.student_id != id" (click)="showBasicDialog(item.student_id)"><i class="pi pi-pencil"></i>互评</a>
+                <a *ngIf="item.student_id == id" (click)="showBasicDialog(item.student_id)"><i class="pi pi-pencil"></i>自评</a>
+                </td>
+            </tr>
+
+        </table>
+
+
+
+
+
+    </div>
+
+
+</div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>
+
+<p-dialog header="评分" [(visible)]="displayBasic" [style]="{width: '40vw'}" [baseZIndex]="10000">
+    <form [formGroup]="creatcForm">
+        <div class="taskc">
+            <span>项目名称</span>
+            <input name="taskname" formControlName="taskname" pattern="^100$|^(\d|[1-9]\d)(\.\d+)*$" required
+                placeholder="输入成绩">
+        </div>
+        <div *ngIf="creatcForm.get('taskname').invalid  && (creatcForm.get('taskname').dirty || creatcForm.get('taskname').touched)"
+            class="errors">
+
+            <small *ngIf="creatcForm.get('taskname').errors.required">
+                成绩不能为空！
+            </small>
+            <small *ngIf="creatcForm.get('taskname').errors.pattern">
+                0-100的数字！
+            </small>
+        </div>
+
+
+    </form>
+
+    <p-footer>
+        <button *ngIf="sid != id" type="button" pButton icon="pi pi-check" [disabled]="!creatcForm.valid" (click)="apple()"
+            (click)="displayBasic=false" label="确定"></button>
+        <button *ngIf="sid == id" type="button" pButton icon="pi pi-check" [disabled]="!creatcForm.valid" (click)="apple1()"
+            (click)="displayBasic=false" label="确定"></button>
+        <button type="button" pButton icon="pi pi-times" (click)="clean()" (click)="displayBasic=false" label="取消"
+            class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
+

@@ -11,8 +11,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./ismessage.component.css']
 })
 export class IsmessageComponent implements OnInit {
-  public messages:any[] = [1,2];
-  public readmessage:any[]=[1];
+  public messages:any[] = [];
+  public readmessage:any[]=[];
   public num:any=0;
   position:any;
 

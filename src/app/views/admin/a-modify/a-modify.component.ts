@@ -22,8 +22,8 @@ export class AModifyComponent implements OnInit {
   en: any;
   public email: any ;
   public nickname: any;
-  public name: any=44;
-  public gender: any=1;
+  public name: any;
+  public gender: any;
   public signature: any;
   public self_proportion: any;
   public birthday: any;

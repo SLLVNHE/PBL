@@ -31,7 +31,7 @@
     </div>
     <div class="user">
         <span class="k">出生日期：</span>
-        <p-calendar  placeholder={{birthday}} class="v" [(ngModel)]="birthday" [showIcon]="true" dateFormat="yy.mm.dd"  [readonlyInput]="true"></p-calendar>
+        <p-calendar  placeholder={{birthday}} class="v" [(ngModel)]="birthday" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000" [showIcon]="true" dateFormat="yy.mm.dd"  [readonlyInput]="true"></p-calendar>
 
     </div>
 

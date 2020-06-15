@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { DropdownModule } from 'primeng/dropdown';
 
@@ -190,6 +191,7 @@ import { PCompleteTaskComponent } from './views/student/project/p-complete-task/
     StorageService,
     ConfirmationService,
     MessageService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy, }
    
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
   ],

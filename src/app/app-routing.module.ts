@@ -114,6 +114,37 @@ const routes: Routes = [
             component: ASeemComponent
           },
         ]
+      }, {
+        path: 'user',
+        component: UserComponent,
+        children: [
+          {
+            path: '',
+            component: UserHomeComponent
+
+          },
+          {
+            path: 'userhome',
+            component: UserHomeComponent
+          },
+          {
+            path: 'info',
+            component: UserInfoComponent
+          },
+          {
+            path: 'avatar',
+            component: UserAvatarComponent
+          },
+          {
+            path: 'psd',
+            component: UserPasswordComponent
+          },
+          {
+            path: 'real',
+            component: UserRealnameComponent
+          },
+
+        ]
       }
     ]
   },
@@ -141,6 +172,37 @@ const routes: Routes = [
 
         ]
 
+      },  {
+        path: 'user',
+        component: UserComponent,
+        children: [
+          {
+            path: '',
+            component: UserHomeComponent
+
+          },
+          {
+            path: 'userhome',
+            component: UserHomeComponent
+          },
+          {
+            path: 'info',
+            component: UserInfoComponent
+          },
+          {
+            path: 'avatar',
+            component: UserAvatarComponent
+          },
+          {
+            path: 'psd',
+            component: UserPasswordComponent
+          },
+          {
+            path: 'real',
+            component: UserRealnameComponent
+          },
+
+        ]
       },
       {
         path: 'teacherc',

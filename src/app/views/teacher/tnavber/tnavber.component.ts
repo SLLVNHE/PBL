@@ -58,7 +58,7 @@ export class TnavberComponent implements OnInit {
           this.name = this.email;
         } else {
 
-          this.name = this.nickname;
+          this.name = val.nickname;
         }
 
       } else {

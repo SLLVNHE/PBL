@@ -11,8 +11,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class PDiscussionBoardComponent implements OnInit {
  
-  public posts: any[] = [1];
-  public replies:any[]=[1];
+  public posts: any[] = [];
+  public replies:any[]=[];
   public page: any = 1;
   public total: any;
   public pid:any;

@@ -58,7 +58,7 @@ export class AnavbarComponent implements OnInit {
           this.name = this.email;
         } else {
 
-          this.name = this.nickname;
+          this.name = val.nickname;
         }
 
       } else {

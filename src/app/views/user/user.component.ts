@@ -10,9 +10,9 @@ export class UserComponent implements OnInit {
 
   constructor(
 
-  ) { }
+  ) { this.role = localStorage.getItem("role")}
 
- 
+  role:any;
 
   items: MenuItem[];
 

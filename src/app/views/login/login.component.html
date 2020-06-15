@@ -42,7 +42,7 @@
                         formControlName="loginPsd"
                         maxlength="18"
                         minlength="6"
-                        pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*])[\da-zA-Z~!@#$%^&*]{6,18}$"
+                       
                         placeholder="密码"/>
 
                     </div>
@@ -54,9 +54,7 @@
                 <small *ngIf="loginForm.get('loginPsd').errors.required">
                     请填写密码！
                 </small>
-                <small *ngIf="loginForm.get('loginPsd').errors.pattern">
-                    请填写正确格式的密码（6-18位字母数字字符）！
-                </small>
+               
             </div>
 
 

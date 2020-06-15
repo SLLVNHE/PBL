@@ -16,7 +16,7 @@ export class TscoreComponent implements OnInit {
   public pname: any;
   public leader: any[] = [];
   public member: any[] = [];
-  public scores:any [] = [1];
+  public scores:any [] = [];
   public position: any;
   public val:any;
   displayBasic: boolean;

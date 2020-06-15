@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
   
  onSubmit(){
-  
+   localStorage.clear();
    this.httpRequest.httpPost("login", { email: this.loginForm.get('loginEmail').value, password: this.loginForm.get('loginPsd').value})
    .subscribe((val:any) => {
     

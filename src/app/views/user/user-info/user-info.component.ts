@@ -89,8 +89,8 @@ getUserInfo(){
       var asyncResult4: any;
       var message = '';
 
-    if(this.nickname == ""){
-      asyncResult1 = await this.httpRequest.httpGet("modify_nickname", { 'nickname': " " }).toPromise();
+    if(this.nickname == undefined){
+      // asyncResult1 = await this.httpRequest.httpGet("modify_nickname", { 'nickname': " " }).toPromise();
     }else{
       asyncResult1 = await this.httpRequest.httpGet("modify_nickname", { 'nickname': this.nickname}).toPromise();
     }
@@ -145,6 +145,9 @@ getUserInfo(){
       icon: 'pi pi-info-circle',
       acceptLabel: '确认',
       rejectVisible: false,
+        accept: () => {
+          location.reload();
+        },
       key: "positionDialog"
     });
     
@@ -159,6 +162,7 @@ getUserInfo(){
     })
   }
       this.getUserInfo();
+    
 
 }
 

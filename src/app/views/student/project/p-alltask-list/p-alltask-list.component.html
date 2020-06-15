@@ -19,12 +19,12 @@
             </div>
            <div class="taskc">
             <span>开始时间</span>
-            <p-calendar  class="v" name="start" formControlName="start" [showIcon]="true" [showTime]="true" 
+            <p-calendar  class="v" name="start" formControlName="start" [showIcon]="true" [showTime]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
                required [readonlyInput]="true"></p-calendar>
            </div>
           <div class="taskc">
             <span>结束时间</span>
-            <p-calendar  class="v" name="end" formControlName="end" [showIcon]="true" [showTime]="true" required 
+            <p-calendar  class="v" name="end" formControlName="end" [showIcon]="true" [showTime]="true" required [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
                 [readonlyInput]="true"></p-calendar>
           </div>
           <div class="taskc">

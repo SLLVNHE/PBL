@@ -21,7 +21,7 @@
                     {{item.start_time | date:'yyyy-MM-dd'}}--{{item.end_time | date:'yyyy-MM-dd'}}
                 </td>
                 <td class="end2">
-                    <a><i class="pi pi-plus"></i>添加</a>
+                    <a (click)="add(item.project_id)"><i class="pi pi-plus"></i>添加</a>
                 </td>
             </tr>
           
@@ -35,3 +35,4 @@
 
 
 </div>
+<p-confirmDialog key="positionDialog" [position]="position"></p-confirmDialog>

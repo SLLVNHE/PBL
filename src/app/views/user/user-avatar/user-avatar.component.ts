@@ -30,7 +30,7 @@ export class UserAvatarComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private router :Router,
   ) {
-    this.uploadUrl = 'http://localhost:4200/api/modify_avatar';
+    this.uploadUrl = 'http://106.54.82.100:81/api/modify_avatar';
   }
 
     myUploader(event): void {
@@ -54,6 +54,9 @@ export class UserAvatarComponent implements OnInit {
           icon: 'pi pi-info-circle',
           acceptLabel: '确认',
           rejectVisible: false,
+          accept: () => {
+            location.reload();
+          },
           key: "positionDialog"
         });
          this.getUserAvatar();

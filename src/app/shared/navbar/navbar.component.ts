@@ -58,9 +58,8 @@ export class NavbarComponent implements OnInit {
       
         if (val.nickname == undefined) {
           this.name = this.email;
-        } else {
-         
-          this.name = this.nickname;
+        } else {         
+          this.name = val.nickname;
         }
 
       } else {

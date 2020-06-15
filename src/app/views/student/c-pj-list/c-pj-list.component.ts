@@ -32,6 +32,26 @@ export class CPjListComponent implements OnInit {
 
   }
 
+  add(id){
+    this.httpRequest.httpGet("add_project", { "project_id": id }).subscribe((val: any) => {
+      if (val.message == "success") {
+        this.position = "top";
+        this.confirmationService.confirm({
+          message: '添加成功！',
+          header: '提示',
+          icon: 'pi pi-info-circle',
+          //  acceptVisible:false,
+          acceptLabel: '确认',
+          rejectVisible: false,
+          key: "positionDialog"
+        });
+        this.getPjlist();
+      } else {
+        
+      }
+    })
+  }
+
   getPjlist(){
     this.httpRequest.httpGet("unselected_projects", { "course_id": this.course_id }).subscribe((val:any)=>{
       if (val.message == "failure") {

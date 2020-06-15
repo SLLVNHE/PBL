@@ -14,7 +14,7 @@ export class PAlltaskListComponent implements OnInit {
   public pid: any;
   public Identity:any;
   public pname: any;
-  public tasks: any[] = [1];
+  public tasks: any[] = [];
   add1:any;
   add2:any;
   role:any;

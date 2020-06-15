@@ -20,9 +20,15 @@
                     <div>
                         {{i.start_time | date:'yyyy-MM-dd'}} ---- {{i.end_time | date:'yyyy-MM-dd'}}
                     </div>
-                    <p-footer>
+                    <p-footer *ngIf="now > i.end_time">
                         <button pButton type="button" (click)="add(i.course_id)" label="加入课程" icon="pi pi-plus-circle"
                             style="margin-right: .25em"></button>
+                        <!-- <button pButton type="button" label="" icon="pi pi-times" class="ui-button-secondary"></button> -->
+                    </p-footer>
+                    <p-footer *ngIf="now < i.end_time">
+                        <button pButton type="button"  label="已过期" icon="pi pi-plus-circle"
+                            style="margin-right: .25em"></button>
+                     
                         <!-- <button pButton type="button" label="" icon="pi pi-times" class="ui-button-secondary"></button> -->
                     </p-footer>
                 </p-card>

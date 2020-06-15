@@ -13,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AListComponent implements OnInit {
   plist:any;
   position:any;
-  users:any[] =[1];
+  users:any[] =[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -45,6 +45,8 @@ export class AListComponent implements OnInit {
   }
 
   getmember() {
+    
+
     this.httpRequest.httpGet("all_users", { }).subscribe((val: any) => {
       if (val.message == "failure") {
         this.position = "top";

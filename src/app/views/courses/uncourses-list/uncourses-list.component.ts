@@ -17,9 +17,10 @@ export class UncoursesListComponent implements OnInit {
   public course: any[] = [];
   public x: any[] = [];
   public page: any = 1;
-  public total: any = 10;
+  public total: any ;
   public name:any;
   public position:any;
+  public now:any;
 
 
   getX() {
@@ -40,6 +41,7 @@ export class UncoursesListComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private router: Router
   ) {
+    this.now = new Date();
     this.getunCourse();
    }
 
@@ -93,6 +95,9 @@ export class UncoursesListComponent implements OnInit {
           //  acceptVisible:false,
           acceptLabel: '确认',
           rejectVisible: false,
+          accept: () => {
+            location.reload();
+          },
           key: "positionDialog",
         });
        

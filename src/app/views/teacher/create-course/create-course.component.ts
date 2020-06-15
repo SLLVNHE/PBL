@@ -17,7 +17,8 @@ export class CreateCourseComponent implements OnInit {
   minDateValue:any;
   minDateValue2:any;
   public httpOptions;
-  public headers: HttpHeaders = new HttpHeaders({ 'Authorization': localStorage.getItem("token") });
+  public headers: HttpHeaders = new HttpHeaders({
+       'Authorization': localStorage.getItem("token"), "Content-Type": undefined,});
   startDate:any;
   st:any;
   en:any;
@@ -61,6 +62,8 @@ export class CreateCourseComponent implements OnInit {
   }
 
   onSubmit() {
+
+    
 
     var startDate = new Date(this.creatcForm.get('start').value);
     var endDate = new Date(this.creatcForm.get('end').value);

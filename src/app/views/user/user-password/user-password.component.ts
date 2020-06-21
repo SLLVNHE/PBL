@@ -26,6 +26,8 @@ export class UserPasswordComponent implements OnInit {
   public email :any;
   public p1: any
   public p2: any;
+  public p3: any
+  public p4: any;
 
   public form1: FormGroup;
   public form2: FormGroup;

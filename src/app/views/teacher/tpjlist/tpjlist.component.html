@@ -22,7 +22,7 @@
                 </td>
                 <td class="end2">
                     <a [routerLink]="['/teacherhome/teacherp']"
-                        [queryParams]="{pid: item.project_id, leader :1}"
+                        [queryParams]="{pid: item.project_id, leader :2, cid:course_id}"
                         routerLinkActive="router-link-active">进入</a>/
                 <a (click)="deletepj(item.project_id)">删除</a>
                 </td>

@@ -38,7 +38,7 @@ export class AnavbarComponent implements OnInit {
 
   getUserInfo() {
     this.httpRequest.httpGet("view_personal_info", {}).subscribe((val: any) => {
-      console.log(val)
+     
       if (val.message == 'success') {
 
         this.email = val.email;
@@ -77,15 +77,6 @@ export class AnavbarComponent implements OnInit {
   }
 
 
-  // getUserAvatar() {
-  //   this.httpRequest.httpGetFile("view_avatar", {}, "arraybuffer").subscribe((val:any)=>{
-  //     var blob = new Blob([val], { type: "image/jpeg" });
-  //     this.image = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob));
-
-
-  //   })
-
-  // }
 
   getUserAvatar() {
     this.httpRequest.httpGet("view_avatar", {}).subscribe((val: any) => {

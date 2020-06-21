@@ -20,7 +20,8 @@ export class ResetPasswordComponent implements OnInit {
   public divH1:boolean = true;
   public divH2:boolean = false;
   public content = "验证身份";
-
+  public p1: any
+  public p2: any;
   registerForm: FormGroup;
   constructor(
     private fb: FormBuilder,

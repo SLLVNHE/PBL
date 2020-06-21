@@ -59,7 +59,37 @@ export class ACreateComponent implements OnInit {
         }
 
 
-      })
+      }
+        ,
+        error => {
+
+          if (error.error.message == "failure") {
+            this.position = "top";
+            this.confirmationService.confirm({
+              message: "添加失败，请重试！",
+              header: '提示',
+              icon: 'pi pi-info-circle',
+              //  acceptVisible:false,
+              acceptLabel: '确认',
+              rejectVisible: false,
+              key: "positionDialog"
+            });
+            this.buildForm();
+          } else if (error.error.message == "existed account") {
+            this.position = "top";
+            this.confirmationService.confirm({
+              message: "账号已存在，请重试！",
+              header: '提示',
+              icon: 'pi pi-info-circle',
+              //  acceptVisible:false,
+              acceptLabel: '确认',
+              rejectVisible: false,
+              key: "positionDialog"
+            });
+            this.buildForm();
+          }
+
+        },)
   }
 
   ngOnInit(): void {

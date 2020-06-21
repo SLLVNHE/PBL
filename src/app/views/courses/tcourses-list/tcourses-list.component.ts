@@ -16,7 +16,7 @@ export class TcoursesListComponent implements OnInit {
   public image: any = "../../../../assets/images/110404-152108304476cb.jpg";
   public course: any[] = [];
   public x: any[] = [];
-  public page: any = 1;
+  public page: any;
   public total: any;
   position: string;
 
@@ -37,7 +37,9 @@ export class TcoursesListComponent implements OnInit {
     public httpRequest: HttpRequestService,
     private confirmationService: ConfirmationService,
     private router: Router,
-  ) { }
+  ) { 
+    this.page = 0;
+  }
 
 
   in(id) {
@@ -55,10 +57,13 @@ export class TcoursesListComponent implements OnInit {
           icon: 'pi pi-info-circle',
           //  acceptVisible:false,
           acceptLabel: '确认',
+          accept: () => {
+            location.reload();
+          },
           rejectVisible: false,
           key: "positionDialog"
         });
-        this.getCourse();
+       
 
       } 
        else {
@@ -79,18 +84,18 @@ export class TcoursesListComponent implements OnInit {
 
 
   onPage(event: any) {
-
     if (this.page != event.page) {
       this.page = event.page;
       this.getCourse();
+      
 
     }
   }
 
   getCourse() {
-    this.httpRequest.httpGet('student_view_courses', { "page": this.page }).subscribe((val: any) => {
+    this.httpRequest.httpGet('teacher_view_courses', { "page": this.page+1 }).subscribe((val: any) => {
       if (val.message == undefined) {
-        console.log(val)
+        this.x = [];
         this.course = val.courses;
         this.total = val.total;
         this.getX();

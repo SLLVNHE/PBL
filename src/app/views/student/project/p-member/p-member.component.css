@@ -69,3 +69,10 @@ table tr th, table tr td{
 .end2{
      width: 6em;
 }
+.noc{
+    padding-left: 3em;
+    padding-top: 2em;
+    line-height: 37px;
+    font-size: 18px;
+    
+}

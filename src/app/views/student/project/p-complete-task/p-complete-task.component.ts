@@ -18,16 +18,18 @@ export class PCompleteTaskComponent implements OnInit {
   position: any;
   public iscom: any;
   public is_accomplished: any;
-
+  cid:any;
+  introduce:any;
   constructor(
     private activatedRoute: ActivatedRoute,
     public httpRequest: HttpRequestService,
     private confirmationService: ConfirmationService,
   ) {
     activatedRoute.queryParams.subscribe(queryParams => {
-      this.tid = queryParams.id;
-     
+      this.tid = queryParams.tid;
+      this.cid = queryParams.cid;
     });
+    this.getP()
   }
 
   complished(){
@@ -62,16 +64,17 @@ export class PCompleteTaskComponent implements OnInit {
 
   getP() {
     this.httpRequest.httpGet("see_task", { "task_id": this.tid }).subscribe((val: any) => {
-      if (val.message == "failure") {
+     
+      if (val.message == undefined) {
         //失败
-
-      } else {
-        this.task_name = val.task_name;
+  this.task_name = val.task_name;
         this.importance = val.importance;
         this.start_time = val.start_time;
         this.end_time = val.end_time;
-      
+        this.introduce = val.introduce;
         this.is_accomplished = val.is_accomplished;
+      } else {
+      
 
       }
     })

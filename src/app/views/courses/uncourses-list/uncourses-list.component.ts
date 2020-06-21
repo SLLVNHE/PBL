@@ -16,7 +16,7 @@ export class UncoursesListComponent implements OnInit {
   public image: any = "../../../../assets/images/110404-152108304476cb.jpg";
   public course: any[] = [];
   public x: any[] = [];
-  public page: any = 1;
+  public page: any = 0;
   public total: any ;
   public name:any;
   public position:any;
@@ -42,7 +42,7 @@ export class UncoursesListComponent implements OnInit {
     private router: Router
   ) {
     this.now = new Date();
-    this.getunCourse();
+    
    }
 
 
@@ -128,9 +128,9 @@ export class UncoursesListComponent implements OnInit {
   }
 
   getunCourse() {
-    this.httpRequest.httpGet('student_view_unselected_courses', { "page": this.page }).subscribe((val: any) => {
-    console.log(val)
+    this.httpRequest.httpGet('student_view_unselected_courses', { "page": this.page+1 }).subscribe((val: any) => {
       if (val.message == undefined) {
+        this.x = [];
         this.course = val.courses;
         this.total = val.total;          
         this.getX();
@@ -140,6 +140,7 @@ export class UncoursesListComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.getunCourse();
     this.getUserInfo();
   }
 

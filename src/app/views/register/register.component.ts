@@ -56,7 +56,6 @@ export class RegisterComponent implements OnInit {
     };
 
    this.httpRequest.httpGet("send_email",dates).subscribe((val:any)=>{
-     console.log(val)
      if (val.message == "send successfuly"){
        //发送成功
        this.position = position;
@@ -109,7 +108,35 @@ export class RegisterComponent implements OnInit {
          key: "positionDialog"
        });
      }
-   })
+   },
+     error => {
+
+       if (error.error.message == "send failed") {
+         this.position = "top";
+         this.confirmationService.confirm({
+           message: "发送失败，请重试！",
+           header: '提示',
+           icon: 'pi pi-info-circle',
+           //  acceptVisible:false,
+           acceptLabel: '确认',
+           rejectVisible: false,
+           key: "positionDialog"
+         });
+       
+       } else if (error.error.message == "Operate too frequently"){
+         this.confirmationService.confirm({
+           message: '操作过于频繁（一个邮箱一分钟只能发一次）！',
+           header: '提示',
+           icon: 'pi pi-info-circle',
+           //  acceptVisible:false,
+           acceptLabel: '确认',
+           rejectVisible: false,
+           key: "positionDialog"
+         });
+       }
+
+     },
+   )
 
     let number = 60;
     this.disabled = true;

@@ -12,7 +12,7 @@
         
         
         <div class="user">
-            <span class="k">时间：{{time |date:'M/d/yy, h:mm a ' }}</span>
+            <span class="k">时间：{{time |date:'M/d/yy h:mm:ss ' }}</span>
         
            
         </div>
@@ -29,6 +29,14 @@
         
 
 
+    </div>
+    <div *ngIf="isread == 0">
+        <div class="user">
+           
+    <button type="button" pButton  (click)="read()"  label="确认已阅读"
+        ></button>
+        
+        </div>
     </div>
 
 

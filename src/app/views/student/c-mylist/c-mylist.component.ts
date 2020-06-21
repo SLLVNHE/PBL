@@ -11,7 +11,7 @@ import { ConfirmationService } from 'primeng/api';
 })
 export class CMylistComponent implements OnInit {
 
-  public course_id: any;
+  public cid: any;
   public project_id: any;
   public pname: any;
   public pstart_time: any;
@@ -28,17 +28,17 @@ export class CMylistComponent implements OnInit {
     private confirmationService: ConfirmationService,
   ) {
     activatedRoute.queryParams.subscribe(queryParams => {
-      this.course_id = queryParams.cid;
+      this.cid = queryParams.cid;
     });
 
   }
 
   getmyPjlist() {
-    this.httpRequest.httpGet("selected_projects", { "course_id": this.course_id }).subscribe((val: any) => {
-      if (val.message == "failure") {
-
+    this.httpRequest.httpGet("selected_projects", { "course_id": this.cid }).subscribe((val: any) => {
+      if (val.message == undefined) {
+ this.plist = val.projects
       } else {
-        this.plist = val.projects
+       
       }
     })
   }

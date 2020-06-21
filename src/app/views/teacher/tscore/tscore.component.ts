@@ -23,6 +23,7 @@ export class TscoreComponent implements OnInit {
   value:any;
   sid:any;
   creatcForm: FormGroup;
+  cid:any;
 
 
   showBasicDialog(id) {
@@ -31,7 +32,8 @@ export class TscoreComponent implements OnInit {
   }
 
   apple(){
-    this.httpRequest.httpGet("publish_score", { "project_id": this.pid, "student_id": this.sid, "score": this.creatcForm.get("taskname").value}).subscribe((val: any) => {
+    this.httpRequest.httpGet("teacher_score", { "project_id": this.pid, "student_id": this.sid, "score": this.creatcForm.get("taskname").value}).subscribe((val: any) => {
+      console.log(val)
       if (val.message == "success") {
         this.position = "top";
         this.confirmationService.confirm({
@@ -61,6 +63,7 @@ export class TscoreComponent implements OnInit {
     
     activatedRoute.queryParams.subscribe(queryParams => {
       this.pid = queryParams.pid;
+      this.cid = queryParams.cid;
     });
     this.buildForm();
 
@@ -123,14 +126,43 @@ export class TscoreComponent implements OnInit {
        
 
       }
-    })
+    }, error => {
+
+      if (error.error.message == "failure") {
+        this.position = "top";
+        this.confirmationService.confirm({
+          message: "发布失败，请重试！",
+          header: '提示',
+          icon: 'pi pi-info-circle',
+          //  acceptVisible:false,
+          acceptLabel: '确认',
+          rejectVisible: false,
+          key: "positionDialog"
+        });
+
+      } else if (error.error.message == "published already") {
+          this.position = "top";
+          this.confirmationService.confirm({
+            message: "已经发布！",
+            header: '提示',
+            icon: 'pi pi-info-circle',
+            //  acceptVisible:false,
+            acceptLabel: '确认',
+            rejectVisible: false,
+            key: "positionDialog"
+          });
+
+        }
+    }
+    )
   }
 
   getp() {
     this.httpRequest.httpGet("project_basic_info", { "project_id": this.pid }).subscribe((val: any) => {
-      if (val.message == "failure") {
-      } else {
+      if (val.message == undefined) {
         this.pname = val.project_name;
+      } else {
+        
 
       }
     })
@@ -138,8 +170,10 @@ export class TscoreComponent implements OnInit {
 
   getmember() {
     this.httpRequest.httpGet("view_all_scores", { "project_id": this.pid }).subscribe((val: any) => {
-      if (val.message == "failure") {
-        this.position = "top";
+      if (val.message == undefined) { this.scores = val.scores;
+        
+      } else {
+       this.position = "top";
         this.confirmationService.confirm({
           message: '刷新失败，请重试！',
           header: '提示',
@@ -149,8 +183,6 @@ export class TscoreComponent implements OnInit {
           rejectVisible: false,
           key: "positionDialog"
         });
-      } else {
-        this.scores = val.scores;
      
       }
     })

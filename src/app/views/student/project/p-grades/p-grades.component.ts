@@ -17,6 +17,7 @@ export class PGradesComponent implements OnInit {
   public grade:any;
   public Identity: any;
   public Id: any;
+  cid:any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,18 +27,17 @@ export class PGradesComponent implements OnInit {
       this.p_id = queryParams.pid;
       this.Identity = queryParams.leader;
       this.status = queryParams.status;
+      this.cid = queryParams.cid;
+    
     });  
   }
 
 
   getP() {
     this.httpRequest.httpGet("view_score", { "project_id": this.p_id }).subscribe((val: any) => {
-      if (val.message == "failure") {
+      if (val.message == undefined) {
         //失败
-
-      } else {
-
-        if (val.teacher_grade == -1){
+  if (val.teacher_grade == -1){
           this.teacher_grade = "该项成绩暂未给出";
         }else{
           this.teacher_grade = val.teacher_grade;
@@ -54,6 +54,9 @@ export class PGradesComponent implements OnInit {
         }
    
         this.grade = val.grade;
+      } else {
+
+      
       }
     })
 

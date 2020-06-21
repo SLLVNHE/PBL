@@ -12,6 +12,8 @@ export class TinpjComponent implements OnInit {
   public project_id: any;
   public leader: any;
   public status: any;
+  cid:any;
+  name:any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +23,7 @@ export class TinpjComponent implements OnInit {
     activatedRoute.queryParams.subscribe(queryParams => {
       this.project_id = queryParams.pid;
       this.leader = queryParams.leader;
+      this.cid = queryParams.cid;
     });
 
   }
@@ -28,10 +31,12 @@ export class TinpjComponent implements OnInit {
 
   getP() {
     this.httpRequest.httpGet("project_basic_info", { "project_id": this.project_id }).subscribe((val: any) => {
-      if (val.message == "failure") {
+      if (val.message == undefined) { 
+        this.status = val.status;
+        this.name = val.project_name;
         //失败
       } else {
-        this.status = val.status;
+       
       }
     })
 

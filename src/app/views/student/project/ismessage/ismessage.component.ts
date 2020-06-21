@@ -30,10 +30,9 @@ export class IsmessageComponent implements OnInit {
 
   getmessages() {
     this.httpRequest.httpGet("messages", {}).subscribe((val: any) => {
-      if (val.message == "failure") {
-        this.num = 0;
-      } else {
-       
+      if (val.message == undefined) {
+         this.messages = [];
+         this.readmessage = [];
         val.supervises.forEach(element => {
           if (element.isRead == 0) {
             this.messages.push(element);
@@ -43,13 +42,16 @@ export class IsmessageComponent implements OnInit {
 
         });
         this.num = this.messages.length;
+      } else {
+       this.num = 0;
+     
       }
 
     })
   }
 
   delect(uid, tid){
-    this.httpRequest.httpGet("messdelete_messageages", { "superviseUserId": uid,"task_id":tid}).subscribe((val: any) => {
+    this.httpRequest.httpGet("delete_message", { "superviseUserId": uid,"task_id":tid}).subscribe((val: any) => {
       if (val.message == "success") {
         this.position = "top";
         this.confirmationService.confirm({

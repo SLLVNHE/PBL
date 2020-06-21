@@ -50,17 +50,30 @@ table{
 
 td{
    
-    padding-left: 1em;
+    /* padding-left: 1em; */
     padding-top: 2em;
      display: flex;
      
       width:1000px;
 }
 
+.table2{
+    margin-top: 0.5em;
+    margin-left: 0em;
+    width: 20em;
+}
+
+.table2 td{
+    padding-top: 1em;
+     display: flex;
+     
+      width:800px;
+}
+
 #avimg{
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
 }
 
 .page{
@@ -142,7 +155,7 @@ small{
    
     text-align:center;
     vertical-align:middle;
-    width: 10%;
+    width: 8%;
     float: left;
      
 }
@@ -166,7 +179,7 @@ small{
 }
 #time{
     margin-left: 5em;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 #title{
@@ -196,13 +209,18 @@ small{
 }
 
 .con{
-     min-height: 10em;
+     
      text-align: left;
      padding-left: 1em;
      /* margin-top: 1em; */
     line-height: 40px;
     color: #99a2aa;
-   
+   border: 1px solid #00a1d7;
+}
+#con{
+    word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ;
 }
 
-
+a{
+    cursor: pointer;
+}

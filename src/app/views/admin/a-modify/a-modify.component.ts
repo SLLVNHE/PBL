@@ -28,6 +28,7 @@ export class AModifyComponent implements OnInit {
   public self_proportion: any;
   public birthday: any;
   val1: string = '';
+  maxDateValue: any;
 
 
 
@@ -46,7 +47,7 @@ export class AModifyComponent implements OnInit {
     activatedRoute.queryParams.subscribe(queryParams => {
       this.uid = queryParams.uid;
     });
-
+    this.maxDateValue = new Date()
     this.getP();
 
    
@@ -57,14 +58,9 @@ export class AModifyComponent implements OnInit {
 
   getP() {
     this.httpRequest.httpGet("view_user", { "id": this.uid }).subscribe((val: any) => {
-      if (val.message == "failure") {
-        //失败
-
-      } else if (val.message == "user not found") {
-
-      } else {
-     
-        this.email = val.email;
+      if (val.message == undefined) {
+       
+  this.email = val.email;
         this.name = val.name;
         this.nickname = val.nickname;
         this.gender = val.gender;
@@ -80,6 +76,9 @@ export class AModifyComponent implements OnInit {
         } else {
           this.val1 = '';
         }
+      }  else {
+     
+      
 
       }
     })
@@ -155,7 +154,7 @@ setinfo(position) {
     } else if (this.val1 == "女") {
       this.gender = 1;
     } else {
-      console.log("这里", this.gender)
+     
     }
 
   if (this.birthday == undefined) {
@@ -165,9 +164,7 @@ setinfo(position) {
       this.birthday = myDate
     }
 
-    console.log(
-      this.name, this.nickname, this.signature, this.gender, this.birthday
-    )
+  
     this.httpRequest.httpPost("modify_user", {
       "id":this.uid, "nickname": this.nickname, "name": this.name, "gender": this.gender,   "signature": this.signature, "birthday":this.birthday}).subscribe((val:any)=>{
         this.position = position;
@@ -192,7 +189,37 @@ setinfo(position) {
         key: "positionDialog"
       })
     }
-})
+      },
+        error => {
+
+          if (error.error.message == "failure") {
+            this.position = "top";
+            this.confirmationService.confirm({
+              message: "更改失败，请重试！",
+              header: '提示',
+              icon: 'pi pi-info-circle',
+              //  acceptVisible:false,
+              acceptLabel: '确认',
+              rejectVisible: false,
+              key: "positionDialog"
+            });
+           
+          } else if (error.error.message == "user not found") {
+            this.position = "top";
+            this.confirmationService.confirm({
+              message: "用户不存在！",
+              header: '提示',
+              icon: 'pi pi-info-circle',
+              //  acceptVisible:false,
+              acceptLabel: '确认',
+              rejectVisible: false,
+              key: "positionDialog"
+            });
+           
+          }
+
+        },
+)
 
     
     

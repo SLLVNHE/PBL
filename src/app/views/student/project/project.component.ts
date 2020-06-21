@@ -12,6 +12,8 @@ export class ProjectComponent implements OnInit {
   public project_id:any;
   public leader:any;
   public status:any;
+  public name:any;
+  cid:any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,6 +23,7 @@ export class ProjectComponent implements OnInit {
     activatedRoute.queryParams.subscribe(queryParams => {
       this.project_id = queryParams.pid;
       this.leader = queryParams.leader;
+      this.cid = queryParams.cid;
     });
 
   }
@@ -28,15 +31,17 @@ export class ProjectComponent implements OnInit {
 
   getP() {
     this.httpRequest.httpGet("project_basic_info", { "project_id": this.project_id }).subscribe((val: any) => {
-      if (val.message == "failure") {
-        //失败
+      if (val.message == undefined) { 
+         this.status = val.status;
+        this.name = val.project_name;
+      
       } else {
-        this.status = val.status;
+      
       }
     })
 
   }
-
+ 
 
   ngOnInit(): void {
     this.getP();

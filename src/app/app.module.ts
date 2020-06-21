@@ -53,7 +53,7 @@ import { UserAvatarComponent } from './views/user/user-avatar/user-avatar.compon
 import { UserPasswordComponent } from './views/user/user-password/user-password.component';
 import { UserRealnameComponent } from './views/user/user-realname/user-realname.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import { SafeUrlPipe } from './pipes/safe-url.pipe';
+// import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { UserHomeComponent } from './views/user/user-home/user-home.component';
 import { UncoursesListComponent } from './views/courses/uncourses-list/uncourses-list.component';
 import { StudentComponent } from './views/student/student.component';
@@ -114,7 +114,7 @@ import { PCompleteTaskComponent } from './views/student/project/p-complete-task/
     UserAvatarComponent,
     UserPasswordComponent,
     UserRealnameComponent,
-    SafeUrlPipe,
+    // SafeUrlPipe,
     UserHomeComponent,
     UncoursesListComponent,
     StudentComponent,
@@ -191,9 +191,9 @@ import { PCompleteTaskComponent } from './views/student/project/p-complete-task/
     StorageService,
     ConfirmationService,
     MessageService,
-    { provide: LocationStrategy, useClass: HashLocationStrategy, }
+    { provide: LocationStrategy, useClass: HashLocationStrategy, },
    
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent]
 })

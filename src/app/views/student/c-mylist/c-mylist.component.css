@@ -6,6 +6,7 @@
     width: 100%;
     height: auto;
     min-height: 600px;
+    min-width: 800px;
     margin-bottom: 2em;
 
     /* background-color: #fafafa; */
@@ -82,4 +83,11 @@ a:hover:not(.active) {
 .router-link-active{
     /* color:  #00a1d7; */
     background-color:  #00a1d7;;
+}
+.noc{
+    padding-left: 3em;
+    padding-top: 2em;
+    line-height: 37px;
+    font-size: 18px;
+    
 }

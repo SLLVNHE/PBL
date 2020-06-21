@@ -19,6 +19,7 @@ export class PDetailsComponent implements OnInit {
   public mutual_proportion:any;
   public Identity:any;
   public Id:any;
+  cid:any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,27 +28,31 @@ export class PDetailsComponent implements OnInit {
     activatedRoute.queryParams.subscribe(queryParams => {
       this.p_id = queryParams.pid;
       this.Identity = queryParams.leader;
+      this.cid = queryParams.cid;
       if(this.Identity == 1){
         this.Id = "组长";
-      }else{
-        this.Id = "组员";
+      } else if (this.Identity == 0){
+         this.Id = "组员";
+      }
+      else{
+        this.Id = "老师";
       }
     }); 
   }
 
   getP() {
     this.httpRequest.httpGet("project_basic_info", { "project_id": this.p_id }).subscribe((val: any) => {
-      if (val.message == "failure") {
+      if (val.message == undefined) {
         //失败
-
-      } else {
-        this.project_name = val.project_name;
+  this.project_name = val.project_name;
         this.introduce = val.introduce;
         this.start_time = val.start_time;
         this.end_time = val.end_time;
         this.teacher_proportion = val.teacher_proportion;
         this.self_proportion = val.self_proportion;
         this.mutual_proportion = val.mutual_proportion;
+      } else {
+      
 
       }
     })
@@ -55,6 +60,7 @@ export class PDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getP()
   }
 
 }

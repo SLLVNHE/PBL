@@ -3,6 +3,7 @@ import {FormBuilder,FormGroup, FormControl, NgModel, Validators} from '@angular/
 import { HttpRequestService } from '../../services/http-request.service'
 import { StorageService } from '../../services/storage.service'
 import { Router, NavigationExtras} from '@angular/router'
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import { Router, NavigationExtras} from '@angular/router'
 export class LoginComponent implements OnInit {
   public email:any;
   public password: any;
+  position:any;
  
  
  
@@ -21,6 +23,7 @@ export class LoginComponent implements OnInit {
     public httpRequest : HttpRequestService,
     public storage : StorageService,
     private router : Router,
+    private confirmationService: ConfirmationService,
     ) {
     this.buildForm();
   }
@@ -49,41 +52,45 @@ export class LoginComponent implements OnInit {
        localStorage.setItem('user', this.loginForm.get('loginEmail').value );
        localStorage.setItem('id', val.id);
        localStorage.setItem("role", val.role);
-      //  let navigationExtras: NavigationExtras = {
-      //    queryParams: { 'email': this.loginForm.get('loginEmail').value },
-      //    fragment: 'anchor'
-      //  };
-      // 跳转？？
-      
+     
       if(val.role == 0){
         
          this.router.navigate(['/pblshome']);
       } else if (val.role == 1) {
-       console.log("老师")
-        this.router.navigate(['/teacherhome']);
+    
+        this.router.navigate(['/teacherhome/tcourses']);
       }else{
         this.router.navigate(['/adminhome']);
       }
-      //  switch (val.role) {
-      //    case 0:
-      //      console.log("daozheli")
-          
-      //      break;
-      //    case 1:
-          
-      //      break;
-      //    case 2:
-           
-      //      break;
-      //    default:         
-      //  } 
-
+    
 
      } else if (val.message == "wrong password"){
-       console.log("密码错误")
-     
 
+      this.position="top"
+       this.confirmationService.confirm({
+         message: '密码错误，请输入正确密码？',
+         header: '提示',
+         icon: 'pi pi-info-circle',
+         //  acceptVisible:false,
+         acceptLabel: '确认',
+         rejectVisible: false,
+        
+         key: "positionDialog",
+       });
+      
+     } else if (val.message == "email not found") {
 
+       this.position = "top"
+       this.confirmationService.confirm({
+         message: '邮箱不存在！',
+         header: '提示',
+         icon: 'pi pi-info-circle',
+         //  acceptVisible:false,
+         acceptLabel: '确认',
+         rejectVisible: false,
+
+         key: "positionDialog",
+       });
 
      }
      

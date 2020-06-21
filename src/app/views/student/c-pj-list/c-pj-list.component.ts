@@ -10,7 +10,7 @@ import { ConfirmationService } from 'primeng/api';
   styleUrls: ['./c-pj-list.component.css']
 })
 export class CPjListComponent implements OnInit {
-  public course_id: any;
+  public cid: any;
   public project_id:any;
   public pname: any;
   public pstart_time:any;
@@ -27,7 +27,7 @@ export class CPjListComponent implements OnInit {
     private confirmationService: ConfirmationService,
   ) {
     activatedRoute.queryParams.subscribe(queryParams => {
-      this.course_id = queryParams.cid;
+      this.cid = queryParams.cid;
     });
 
   }
@@ -53,11 +53,11 @@ export class CPjListComponent implements OnInit {
   }
 
   getPjlist(){
-    this.httpRequest.httpGet("unselected_projects", { "course_id": this.course_id }).subscribe((val:any)=>{
-      if (val.message == "failure") {
-
+    this.httpRequest.httpGet("unselected_projects", { "course_id": this.cid }).subscribe((val:any)=>{
+      if (val.message == undefined) {
+this.plist = val.projects
       }else{
-        this.plist = val.projects
+        
       }
     })
   }

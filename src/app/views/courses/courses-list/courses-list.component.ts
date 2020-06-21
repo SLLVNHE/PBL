@@ -14,7 +14,7 @@ export class CoursesListComponent implements OnInit {
   public image: any = "../../../../assets/images/110404-152108304476cb.jpg";
   public course:any[]=[];
   public  x:any[] =[];
-  public page:any = 1;
+  public page:any = 0;
   public total:any;
 
   getX(){
@@ -50,9 +50,10 @@ export class CoursesListComponent implements OnInit {
   }    
 
   getCourse(){
-    this.httpRequest.httpGet('student_view_courses', {"page":this.page}).subscribe((val:any)=>{
+    this.httpRequest.httpGet('student_view_courses', {"page":this.page+1}).subscribe((val:any)=>{
+     
       if (val.message == undefined){
-        console.log(val)
+      this.x =[];
         this.course = val.courses;
         this.total = val.total;
         this.getX();

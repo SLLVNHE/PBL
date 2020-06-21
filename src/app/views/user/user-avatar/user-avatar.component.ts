@@ -75,7 +75,49 @@ export class UserAvatarComponent implements OnInit {
 
 
 
-    });
+    },
+      error => {
+
+        if (error.error.message == "failure") {
+          this.position = "top";
+          this.confirmationService.confirm({
+            message: "修改错误，请重试！",
+            header: '提示',
+            icon: 'pi pi-info-circle',
+            //  acceptVisible:false,
+            acceptLabel: '确认',
+            rejectVisible: false,
+            key: "positionDialog"
+          });
+
+        } else if (error.error.message == "An image is required") {
+          this.confirmationService.confirm({
+            message: '文件格式错误，请重试！',
+            header: '提示',
+            icon: 'pi pi-info-circle',
+            //  acceptVisible:false,
+            acceptLabel: '确认',
+            rejectVisible: false,
+            key: "positionDialog"
+          });
+        }
+        else if (error.error.message == "Image is too large") {
+          this.confirmationService.confirm({
+            message: '文件过大，文件大小不超过200K，请重试！',
+            header: '提示',
+            icon: 'pi pi-info-circle',
+            //  acceptVisible:false,
+            acceptLabel: '确认',
+            rejectVisible: false,
+            key: "positionDialog"
+          });
+        }
+
+      },
+    
+
+
+    );
   }
 
   // upload completed event
@@ -116,7 +158,26 @@ export class UserAvatarComponent implements OnInit {
         
       }
      
-    })
+    },
+      error => {
+
+        if (error.error.message == "failure") {
+          this.position = "top";
+          this.confirmationService.confirm({
+            message: "获取信息失败，请刷新重试！",
+            header: '提示',
+            icon: 'pi pi-info-circle',
+            //  acceptVisible:false,
+            acceptLabel: '确认',
+            rejectVisible: false,
+            key: "positionDialog"
+          });
+
+        } 
+
+      },
+
+    )
   }
 
 

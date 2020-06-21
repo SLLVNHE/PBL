@@ -36,19 +36,17 @@ export class ASeemComponent implements OnInit {
 
   getP() {
     this.httpRequest.httpGet("view_user", { "id": this.uid }).subscribe((val: any) => {
-      if (val.message == "failure") {
-        //失败
-
-      } else if (val.message == "user not found"){
-
-      } else {
-        this.email = val.email;
+      if (val.message == undefined) {
+        
+ this.email = val.email;
         this.nickname = val.nickname;
         this.name = val.name;
         this.gender = val.gender;
         this.signature = val.signature;
         this.self_proportion = val.self_proportion;
         this.birthday = val.birthday;
+      } else {
+       
 
       }
     })

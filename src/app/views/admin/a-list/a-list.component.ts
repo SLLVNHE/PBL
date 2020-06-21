@@ -48,7 +48,11 @@ export class AListComponent implements OnInit {
     
 
     this.httpRequest.httpGet("all_users", { }).subscribe((val: any) => {
-      if (val.message == "failure") {
+      if (val.message == undefined) {
+        this.users = val.users;
+        
+      } else {
+      
         this.position = "top";
         this.confirmationService.confirm({
           message: '刷新失败，请重试！',
@@ -59,8 +63,6 @@ export class AListComponent implements OnInit {
           rejectVisible: false,
           key: "positionDialog"
         });
-      } else {
-      this.users = val.users;
       }
     })
   }

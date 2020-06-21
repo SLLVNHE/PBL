@@ -7,3 +7,6 @@ html, body{
             /* width: 1520px; */
            
         }
+a{
+    cursor: pointer;
+}

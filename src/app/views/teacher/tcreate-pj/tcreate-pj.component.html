@@ -6,25 +6,25 @@
 
 
             <div class="taskc">
-                <span>项目名称</span><input name="taskname" formControlName="taskname" required placeholder="课程名称">
+                <span>项目名称</span><input name="taskname" formControlName="taskname"maxlength="20" required placeholder="课程名称*限20字符">
             </div>
 
             <div class="taskc">
-                <span>项目简介</span><textarea placeholder="课程简介" name="taskcon" formControlName="taskcon"
+                <span>项目简介</span><textarea placeholder="课程简介*限250字符" name="taskcon" maxlength="250" formControlName="taskcon"
                     required></textarea>
             </div>
             <div class="taskc">
-                <span>*结束时间应大于开始时间 </span>
+                <span>*项目时间应在课程时间内，结束时间应大于开始时间 </span>
             </div>
             <div class="taskc">
                 <span>开始时间</span>
-                <p-calendar class="v" name="start" formControlName="start" [showIcon]="true" required [(ngModel)]="st" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
-                    [readonlyInput]="true" [minDate]="minDateValue"></p-calendar>
+                <p-calendar class="v" name="start" formControlName="start" [showIcon]="true"  required [(ngModel)]="st" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
+                    [readonlyInput]="true" [minDate]="minDateValue2"></p-calendar>
             </div>
             <div class="taskc">
                 <span>结束时间</span> 
                 <p-calendar class="v" name="end" formControlName="end" [showIcon]="true" required [(ngModel)]="en" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
-                    [readonlyInput]="true" [minDate]="minDateValue2"></p-calendar>
+                    [readonlyInput]="true" [minDate]="minDateValue3"></p-calendar>
             </div>
 
 

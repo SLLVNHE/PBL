@@ -20,7 +20,7 @@ export class UserInfoComponent implements OnInit {
   public birthday:any;
   val1 :string='';
   position: string;
-
+  maxDateValue: any;
   constructor(private fb: FormBuilder,
     public httpRequest: HttpRequestService,
     public http: HttpClient,
@@ -28,7 +28,7 @@ export class UserInfoComponent implements OnInit {
     private router: Router,
    
   ) {
-   
+   this.maxDateValue = new Date()
   }
 
 
@@ -89,22 +89,28 @@ getUserInfo(){
       var asyncResult4: any;
       var message = '';
 
+    
+
     if(this.nickname == undefined){
       // asyncResult1 = await this.httpRequest.httpGet("modify_nickname", { 'nickname': " " }).toPromise();
-    }else{
-      asyncResult1 = await this.httpRequest.httpGet("modify_nickname", { 'nickname': this.nickname}).toPromise();
+    } else if (this.nickname == ""){
+        asyncResult1 = await this.httpRequest.httpGet("modify_nickname", { 'nickname': " " }).toPromise();
     }
-   
-    if (asyncResult1.message != 'success'){
+    else{
+      asyncResult1 = await this.httpRequest.httpGet("modify_nickname", { 'nickname': this.nickname}).toPromise();
+      if (asyncResult1.message != 'success'){
       message = message +"昵称保存失败！ ";
     }
+    }
+   
+    
 
    if (this.val1 == "男"){
      asyncResult2 = await this.httpRequest.httpGet("modify_gender", { 'gender': 0 }).toPromise();
     }else if(this.val1 == "女"){
      asyncResult2 = await this.httpRequest.httpGet("modify_gender", { 'gender': 1 }).toPromise();
     }else{
-        console.log("这里",this.gender)
+       
     }
   
     if (asyncResult2.message != 'success') {
@@ -113,15 +119,19 @@ getUserInfo(){
 
 
    
-    if(this.signature == ""){
-      asyncResult3 = await this.httpRequest.httpGet("modify_signature", { 'signature': " " }).toPromise();
-    }else{
-       asyncResult3 = await this.httpRequest.httpGet("modify_signature", { 'signature': this.signature }).toPromise();
+    if(this.signature == undefined){
+      // asyncResult3 = await this.httpRequest.httpGet("modify_signature", { 'signature': " " }).toPromise();
+    } else if (this.signature ==""){
+       asyncResult3 = await this.httpRequest.httpGet("modify_signature", { 'signature': " " }).toPromise();
     }
-   
-    if (asyncResult3.message != 'success') {
+    else{
+       asyncResult3 = await this.httpRequest.httpGet("modify_signature", { 'signature': this.signature }).toPromise();
+       if (asyncResult3.message != 'success') {
       message = message + "个性签名保存失败！ ";
     }
+    }
+   
+    
 
 
     if(this.birthday == null){

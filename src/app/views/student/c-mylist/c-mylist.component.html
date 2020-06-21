@@ -1,8 +1,9 @@
 <div class="content">
     <div class="title"><span><i class="pi pi-fw pi-tags"></i> 课程项目</span></div>
-    <div>
-
-
+    <div class="noc" *ngIf="plist.length <= 0">
+        <span id="noc"><i class="pi pi-exclamation-circle"></i>暂无项目</span>
+    </div>
+    <div *ngIf="plist.length > 0">
         <table>
             <tr id="start">
                 <th class="start">项目名称</th>
@@ -18,10 +19,10 @@
                     {{item.introduce}}
                 </td>
                 <td class="end">
-                    {{item.start_time | date:'yyyy-MM-dd'}}--{{item.end_time | date:'yyyy-MM-dd'}}
+                    {{item.start_time | date:'yyyy-MM-dd '}}--{{item.end_time | date:'yyyy-MM-dd '}}
                 </td>
                 <td class="end2">
-                    <a [routerLink]="['/pblshome/studentp']"  [queryParams]="{pid: item.project_id, leader :item.is_leader}" routerLinkActive="router-link-active"><i class="pi pi-arrow-circle-right"></i>进入项目</a>
+                    <a [routerLink]="['/pblshome/studentp']"  [queryParams]="{pid: item.project_id, leader :item.is_leader, cid:cid}" routerLinkActive="router-link-active"><i class="pi pi-arrow-circle-right"></i>进入项目</a>
                 </td>
             </tr>
 

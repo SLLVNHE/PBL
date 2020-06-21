@@ -1,8 +1,9 @@
 <div class="content">
     <div class="title"><span><i class="pi pi-fw pi-tags"></i>小组成员</span></div>
-    <div>
-
-
+    <div class="noc" *ngIf="length1 <= 0 && length2 <= 0">
+        <span id="noc"><i class="pi pi-exclamation-circle"></i>暂无成员</span>
+    </div>
+    <div *ngIf="length1 > 0 || length2 > 0">
         <table>
             <tr id="start">
                 <th class="start">姓名</th>
@@ -24,9 +25,9 @@
                     <a>已选择</a>
                 </td>
             </tr>
-            <tr *ngFor="let item of member">
+            <tr *ngFor="let item2 of member">
                 <td class="start">
-                    {{item.student_name}}
+                    {{item2.student_name}}
                 </td>
                 <td class="next">
                     {{pname}}
@@ -35,7 +36,7 @@
                     组员
                 </td>
                 <td class="end2">
-                    <a (click)="select(item.student_id)"><i class="pi pi-user-plus"></i>选为组长</a>
+                    <a (click)="select(item2.student_id)"><i class="pi pi-user-plus"></i>选为组长</a>
                 </td>
             </tr>
 

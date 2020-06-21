@@ -2,34 +2,34 @@
 
     <p>新建课程</p>
     <div class="addtask">
-        <form [formGroup]="creatcForm" (ngSubmit)="onSubmit()" >
+        <form [formGroup]="creatcForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
     
     
             <div class="taskc">
-                <span>课程名称</span><input name="taskname" formControlName="taskname" required >
+                <span>课程名称</span><input name="taskname"   placeholder='*限20字符' maxlength="20" formControlName="taskname"  required >
             </div>
     
             <div class="taskc">
-                <span>课程简介</span><textarea  name="taskcon" formControlName="taskcon" required></textarea>
+                <span>课程简介</span><textarea  name="taskcon" placeholder='*限100字符' formControlName="taskcon" maxlength="100"   required></textarea>
             </div>
             <div class="taskc">
                 <span>*结束时间应大于开始时间 </span>
             </div>
             <div class="taskc">
                 <span>开始时间</span>
-                <p-calendar class="v" name="start" formControlName="start" [showIcon]="true"  required [(ngModel)]="st" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
-                    [readonlyInput]="true" [minDate]="minDateValue"></p-calendar>
+                <p-calendar class="v" name="start" formControlName="start" [showIcon]="true" [showTime]="true" required [(ngModel)]="st" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
+                    [readonlyInput]="true" [minDate]="minDateValue2"></p-calendar>
             </div>
             <div class="taskc">
                 <span>结束时间</span>
-                <p-calendar class="v" name="end" formControlName="end" [showIcon]="true" required [(ngModel)]="en" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
-                    [readonlyInput]="true" [minDate]="minDateValue2"></p-calendar>
+                <p-calendar class="v" name="end" formControlName="end" [showIcon]="true" [showTime]="true" required [(ngModel)]="en" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
+                    [readonlyInput]="true" [minDate]="minDateValue3"></p-calendar>
             </div>
 
             
             <div class="taskc">
                 <span>上传课程背景图</span>
-               <input type="file" name="file" formControlName="file" required accept="image/png,image/gif">
+               <input type="file"  name="file" id="myfile" formControlName="file"  required accept="image/*" >
             </div>
            
             <div class="task2">

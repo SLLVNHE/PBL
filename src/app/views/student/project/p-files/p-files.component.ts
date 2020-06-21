@@ -24,6 +24,7 @@ export class PFilesComponent implements OnInit {
   public files: any[] = [];
   public position: any;
   public sid:any;
+  cid:any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,15 +35,17 @@ export class PFilesComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private router: Router,
   ) {
-    this.getfiles();
+    
     activatedRoute.queryParams.subscribe(queryParams => {
       this.pid = queryParams.pid;
+      this.cid = queryParams.cid;
     });
-    this.uploadUrl = 'http://localhost:4200/api/upload_file';
+    this.uploadUrl = 'http://106.54.82.100:81/api/upload_file';
     this.sid = localStorage.getItem("id");
+    this.getfiles();
 }
 
-
+  
   myUploader(event): void {
     if (event.files.length == 0) {
       console.log('No file selected.');
@@ -50,9 +53,10 @@ export class PFilesComponent implements OnInit {
     }
     var fileToUpload = event.files[0];
     let input = new FormData();
-    input.append("avatar", fileToUpload);
+    input.append("file", fileToUpload);
     input.append("project_id", this.pid)
     this.httpOptions = { headers: this.headers, };
+   
     this.http.post(this.uploadUrl, input, this.httpOptions).subscribe((val: any) => {
 
       //成功
@@ -64,11 +68,15 @@ export class PFilesComponent implements OnInit {
           header: '提示',
           icon: 'pi pi-info-circle',
           acceptLabel: '确认',
+          accept: () => {
+
+           location.reload();
+          },
           rejectVisible: false,
           key: "positionDialog"
         });
-        
-
+        // this.getfiles();
+      
       } else {
         this.position = "top";
         this.confirmationService.confirm({
@@ -80,11 +88,23 @@ export class PFilesComponent implements OnInit {
           key: "positionDialog"
         })
       }
+    }, error => {
 
+      if (error.error.message == "failure") {
+        this.position = "top";
+        this.confirmationService.confirm({
+          message: "上传失败，文件过大，请重试！",
+          header: '提示',
+          icon: 'pi pi-info-circle',
+          //  acceptVisible:false,
+          acceptLabel: '确认',
+          rejectVisible: false,
+          key: "positionDialog"
+        });
 
-
-
-    });
+      } 
+    }
+    );
   }
 
   // upload completed event
@@ -93,6 +113,7 @@ export class PFilesComponent implements OnInit {
     for (const file of event.files) {
       this.uploadedFiles.push(file);
     }
+    console.log(this.uploadedFiles)
   }
   onBeforeSend(event): void {
     event.xhr.setRequestHeader('Authorization', localStorage.getItem("token"));
@@ -102,7 +123,9 @@ export class PFilesComponent implements OnInit {
 
   getfiles() {
     this.httpRequest.httpGet("files", { "project_id": this.pid }).subscribe((val: any) => {
-      if (val.message == "failure") {
+      if (val.message == undefined) { this.files = val.files;
+       
+      } else {
         this.position = "top";
         this.confirmationService.confirm({
           message: '刷新失败，请重试！',
@@ -113,33 +136,46 @@ export class PFilesComponent implements OnInit {
           rejectVisible: false,
           key: "positionDialog"
         });
-      } else {
-        this.files = val.files;
        
       }
     })
   }
 
 
-  download(file_id) {
-    const params = {}; // body的参数
-    const queryParams = undefined; // url query的参数
+  download(file_id, name) {
     this.httpRequest.httpGetFile("download_file", { "file_id": file_id}, "arraybuffer").subscribe((val: any) => {
-      // resp: 文件流
-      this.downloadFile(val);
-    })
+      this.downloadFile(val, name);
+    }, error => {
+
+      if (error.error.message == "failure") {
+        this.position = "top";
+        this.confirmationService.confirm({
+          message: "下载失败，请重试！",
+          header: '提示',
+          icon: 'pi pi-info-circle',
+          //  acceptVisible:false,
+          acceptLabel: '确认',
+          rejectVisible: false,
+          key: "positionDialog"
+        });
+
+      }
+    }
+    )
+
   }
 
   /**
    * 创建blob对象，并利用浏览器打开url进行下载
    * @param data 文件流数据
    */
-  downloadFile(data) {
+  downloadFile(data, name) {
     // 下载类型 xls
     const contentType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
     // 下载类型：csv
     const contentType2 = 'text/csv';
-    const blob = new Blob([data.file], { type: "application/pdf" });
+    
+    const blob = new Blob([data], { type: "application/pdf" });
     const url = window.URL.createObjectURL(blob);
     // 打开新窗口方式进行下载
     // window.open(url); 
@@ -148,8 +184,8 @@ export class PFilesComponent implements OnInit {
     const a = document.createElement('a');
 
     a.href = url;
-    // a.download = fileName;
-    a.download = data.fileName + '.pdf';
+   
+    a.download = name + '.pdf';
     a.click();
     window.URL.revokeObjectURL(url);
   }

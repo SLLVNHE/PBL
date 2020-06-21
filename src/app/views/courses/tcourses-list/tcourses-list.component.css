@@ -1,7 +1,7 @@
 
 
 .content {
-    position:relative;
+    
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -46,7 +46,7 @@ td{
 
 .page{
   width: 100%;
-  position: absolute;
+  
   bottom: 0em;
     width: 100%;
     justify-content: center;

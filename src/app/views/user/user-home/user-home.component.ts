@@ -79,7 +79,7 @@ export class UserHomeComponent implements OnInit {
 
   getUserAvatar() {
     this.httpRequest.httpGet("view_avatar", {}).subscribe((val: any) => {
-      console.log(11, val)
+    
       this.image = "http://118.190.235.55/" + val.message;
     })
   }

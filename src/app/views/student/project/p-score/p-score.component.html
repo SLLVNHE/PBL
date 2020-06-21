@@ -35,7 +35,11 @@
                 <td class="end">
                     组员
                 </td>
-                <td class="end2">
+                <td class="end2" *ngIf="status == 1">
+                    <a *ngIf="item.student_id != id" ><i class="pi pi-pencil"></i>过期</a>
+                    <a *ngIf="item.student_id == id" ><i class="pi pi-pencil"></i>过期</a>
+                </td>
+                <td class="end2" *ngIf="status != 1">
                 <a *ngIf="item.student_id != id" (click)="showBasicDialog(item.student_id)"><i class="pi pi-pencil"></i>互评</a>
                 <a *ngIf="item.student_id == id" (click)="showBasicDialog(item.student_id)"><i class="pi pi-pencil"></i>自评</a>
                 </td>
@@ -57,7 +61,7 @@
     <form [formGroup]="creatcForm">
         <div class="taskc">
             <span>项目名称</span>
-            <input name="taskname" formControlName="taskname" pattern="^100$|^(\d|[1-9]\d)(\.\d+)*$" required
+            <input name="taskname" formControlName="taskname" pattern="([1-9]?\d|100)$" required
                 placeholder="输入成绩">
         </div>
         <div *ngIf="creatcForm.get('taskname').invalid  && (creatcForm.get('taskname').dirty || creatcForm.get('taskname').touched)"

@@ -11,21 +11,21 @@
 
        
             <div class="taskc">
-                <span>主题</span><input  name="taskname" formControlName="taskname" required placeholder="任务主题">
+                <span>主题</span><input  name="taskname" formControlName="taskname" maxlength="20" required placeholder="任务主题*限20字符">
             </div>
 
             <div class="taskc">
-                <span>内容</span><textarea placeholder="任务内容" name="taskcon" formControlName="taskcon" required></textarea>
+                <span>内容</span><textarea placeholder="任务内容*限250字符" name="taskcon" maxlength="250" formControlName="taskcon" required></textarea>
             </div>
            <div class="taskc">
             <span>开始时间</span>
             <p-calendar  class="v" name="start" formControlName="start" [showIcon]="true" [showTime]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
-               required [readonlyInput]="true"></p-calendar>
+            [minDate]="minDateValue2"   required [readonlyInput]="true"></p-calendar>
            </div>
           <div class="taskc">
             <span>结束时间</span>
             <p-calendar  class="v" name="end" formControlName="end" [showIcon]="true" [showTime]="true" required [monthNavigator]="true" [yearNavigator]="true" yearRange="1800:3000"
-                [readonlyInput]="true"></p-calendar>
+            [minDate]="minDateValue3"    [readonlyInput]="true"></p-calendar>
           </div>
           <div class="taskc">
               <span>等级</span>
@@ -67,15 +67,15 @@
                    {{item.importance}}
                 </td>
                 <td class="end">
-                   {{item.start_time | date:'M/d/yy, h:mm a '}} ---- {{item.end_time | date:'M/d/yy, h:mm a '}}
+                   {{item.start_time | date:'M/d/yy h:mm:ss '}} -- {{item.end_time | date:'M/d/yy h:mm:ss '}}
                 </td>
                 <td class="end2" *ngIf="role == 0">
-                    <a [routerLink]="['/pblshome/studentp/seetasks']" [queryParams]="{pid: pid, leader:Identity, tid:item.task_id}"
+                    <a [routerLink]="['/pblshome/studentp/seetasks']" [queryParams]="{pid: pid, leader:Identity, tid:item.task_id, cid:cid}"
                     routerLinkActive="router-link-active"><i class="pi pi-arrow-circle-right"></i>查看</a>
                    
                 </td>
                 <td class="end2" *ngIf="role == 1">
-                    <a [routerLink]="['/teacherhome/teacherp/seetasks']" [queryParams]="{pid: pid, leader:Identity, tid:item.task_id}"
+                    <a [routerLink]="['/teacherhome/teacherp/seetasks']" [queryParams]="{pid: pid, leader:Identity, tid:item.task_id, cid:cid}"
                         routerLinkActive="router-link-active"><i class="pi pi-arrow-circle-right"></i>查看</a>
                 
                 </td>

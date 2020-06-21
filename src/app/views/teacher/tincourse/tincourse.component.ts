@@ -26,10 +26,11 @@ export class TincourseComponent implements OnInit {
 
   getC() {
     this.httpRequest.httpGet("course_basic_info", { "course_id": this.course_id }).subscribe((val: any) => {
-      if (val.message == "failure") {
+      if (val.message == undefined) { 
+        this.cname = val.course_name;
         //失败
       } else {
-        this.cname = val.course_name;
+       
       }
     })
 

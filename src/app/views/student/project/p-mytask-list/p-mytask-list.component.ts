@@ -23,6 +23,8 @@ export class PMytaskListComponent implements OnInit {
   isDataAvailable:any =false;
   see1:any=false;
   position:any;
+  leader:any;
+  cid:any;
 
 
   constructor(
@@ -33,6 +35,8 @@ export class PMytaskListComponent implements OnInit {
   ) {
     activatedRoute.queryParams.subscribe(queryParams => {
       this.pid = queryParams.pid;
+      this.leader = queryParams.leader;
+      this.cid = queryParams.cid;
     });
 
    
@@ -50,36 +54,38 @@ export class PMytaskListComponent implements OnInit {
 
  getp() {
    this.httpRequest.httpGet("my_tasks", { "project_id": this.pid }).toPromise().then((val: any) => {
-     if (val.message == "failure") {
-     } else if (val.message == "access deny") {
-     } else {
-      
-      this.tasks = val.tasks;
-       
-      
-     
+  
+     if (val.message == undefined) {
+       this.tasks = val.tasks;
+
+
+
        val.tasks.forEach(element => {
          var data1 = new Date(element.start_time);
-         console.log(data1)
+       
          var data2 = new Date(element.end_time)
          var temp = {};
          temp["id"] = element.task_id;
-         
+
          temp["start"] = data1;
          temp["end"] = data2;
-        
-         if (!element.is_accomplished){
-           
+
+         if (!element.is_accomplished) {
+
            temp['backgroundColor'] = "red";
            temp['borderColor'] = "red";
-           temp["title"] = element.task_name +"（未完成）";
-         }else{
-           temp["title"] = element.task_name + "（以完成）";
-          
+           temp["title"] = element.task_name + "（未完成）";
+         } else {
+           temp["title"] = element.task_name + "（已完成）";
+
          }
-        
+
          this.events.push(temp);
        });
+
+     }  else {
+      
+      
 
 
 
@@ -91,6 +97,7 @@ export class PMytaskListComponent implements OnInit {
 
   com(id){
     this.httpRequest.httpGet("complete_task", { "task_id": id }).subscribe((val:any)=>{
+     
       if (val.message == "success"){
         this.position = "top";
         this.confirmationService.confirm({
@@ -149,7 +156,7 @@ export class PMytaskListComponent implements OnInit {
         console.log(e.event)
         var id = e.event.id;
         
-        this.router.navigate(['/pblshome/studentp/complete'], { queryParams: { id: id} });
+        this.router.navigate(['/pblshome/studentp/complete'], { queryParams: {cid:this.cid, pid: this.pid, tid: id, leader: this.leader} });
        
       },
 

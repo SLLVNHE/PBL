@@ -38,7 +38,7 @@
                 <td class="end2">
                     <a *ngIf="item.teacher_grade != -1" ><i class="pi pi-pencil"></i>已评分</a>
                     <a *ngIf="item.teacher_grade == -1" (click)="showBasicDialog(item.user_id)"><i class="pi pi-pencil"></i>评分</a>
-                    <a  (click)="showBasicDialog(item.user_id)">a</a>
+                    <!-- <a  (click)="showBasicDialog(item.user_id)">a</a> -->
                 </td>
             </tr>
             
@@ -57,7 +57,7 @@
     <form [formGroup]="creatcForm" >    
         <div class="taskc">
             <span>项目名称</span>
-            <input  name="taskname" formControlName="taskname"  pattern="^100$|^(\d|[1-9]\d)(\.\d+)*$"
+            <input  name="taskname" formControlName="taskname"  pattern="([1-9]?\d|100)$"
             required placeholder="输入成绩" >
         </div>    
         <div *ngIf="creatcForm.get('taskname').invalid  && (creatcForm.get('taskname').dirty || creatcForm.get('taskname').touched)"

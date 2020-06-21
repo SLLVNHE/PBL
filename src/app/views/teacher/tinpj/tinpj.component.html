@@ -9,25 +9,28 @@
         <div class="leftbox">
             <ul>
                 <li id="title">
-                    <span>高级WEB{{project_id}}</span>
+                   
+                    <span><a [routerLink]="['/teacherhome/teacherc/mypjlist']" [queryParams]="{cid: cid}"
+                        routerLinkActive="router-link-active"> 退出{{name}}</a></span>
+
                 </li>
                 <li class="content"><a [routerLink]="['/teacherhome/teacherp/details']"
-                        [queryParams]="{pid: project_id, leader:leader}" routerLinkActive="router-link-active"><i
+                        [queryParams]="{pid: project_id, leader:2, cid:cid}" routerLinkActive="router-link-active"><i
                             class="pi pi-align-justify"></i>项目详情</a></li>
-                <li class="content" *ngIf="leader == 1"><a [routerLink]="['/teacherhome/teacherp/pjlist']"
-                        [queryParams]="{pid: project_id, leader:leader}" routerLinkActive="router-link-active"><i
+                <li class="content"><a [routerLink]="['/teacherhome/teacherp/pjlist']"
+                        [queryParams]="{pid: project_id, leader:2, cid:cid}" routerLinkActive="router-link-active"><i
                             class="pi pi-fw pi-copy"></i>项目任务</a></li>
                 <!-- <li class="content"><a [routerLink]="['/teacherhome/teacherp/mypjlist']"
                         [queryParams]="{pid: project_id, leader:leader}" routerLinkActive="router-link-active"><i
                             class="pi pi-fw pi-file"></i>我的任务</a></li> -->
                 <li class="content"><a [routerLink]="['/teacherhome/teacherp/board']"
-                        [queryParams]="{pid: project_id, leader:leader}" routerLinkActive="router-link-active"><i
+                        [queryParams]="{pid: project_id, leader:2,cid:cid}" routerLinkActive="router-link-active"><i
                             class="pi pi-fw pi-calendar"></i>讨论板</a></li>
                 <li class="content"><a [routerLink]="['/teacherhome/teacherp/files']"
-                        [queryParams]="{pid: project_id, leader:leader}" routerLinkActive="router-link-active"><i
+                        [queryParams]="{pid: project_id, leader:2,cid:cid}" routerLinkActive="router-link-active"><i
                             class="pi pi-folder"></i>文件管理</a></li>
                 <li class="content"><a [routerLink]="['/teacherhome/teacherp/member']"
-                        [queryParams]="{pid: project_id, leader:leader}" routerLinkActive="router-link-active"><i
+                        [queryParams]="{pid: project_id, leader:2,cid:cid}" routerLinkActive="router-link-active"><i
                             class="pi pi-users"></i>小组成员</a></li>
                 <!-- <li class="content"><a [routerLink]="['/teacherhome/teacherp/grades']"
                         [queryParams]="{pid: project_id, leader:leader}" routerLinkActive="router-link-active"><i
@@ -36,7 +39,7 @@
                         [queryParams]="{pid: project_id, leader:leader}" routerLinkActive="router-link-active"><i
                             class="pi pi-envelope"></i>收件箱</a></li> -->
                 <li class="content"><a [routerLink]="['/teacherhome/teacherp/grades']"
-                        [queryParams]="{pid: project_id, leader:leader, status: status}"
+                        [queryParams]="{pid: project_id, leader:2, status: status,cid:cid}"
                         routerLinkActive="router-link-active"><i class="pi pi-check"></i>评分</a></li>
             </ul>
         </div>

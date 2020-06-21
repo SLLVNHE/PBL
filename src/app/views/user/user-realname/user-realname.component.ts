@@ -12,6 +12,7 @@ export class UserRealnameComponent implements OnInit {
   able: any;
   able2:any;
   position:any;
+ 
 
 
   getUserInfo() {
@@ -27,7 +28,7 @@ export class UserRealnameComponent implements OnInit {
           this.able2 = true;
        }
        
-console.log(this.name)
+
       } else {
         this.position = "top";
         this.confirmationService.confirm({

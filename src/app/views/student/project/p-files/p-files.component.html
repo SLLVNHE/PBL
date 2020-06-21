@@ -1,6 +1,9 @@
 <div class="content">
     <div class="title"><span><i class="pi pi-fw pi-tags"></i> 文件管理</span></div>
-    <div>
+    <div class="noc" *ngIf="files.length <= 0">
+        <span id="noc"><i class="pi pi-exclamation-circle"></i>暂无文件</span>
+    </div>
+    <div *ngIf="files.length > 0">
 
 
         <table>
@@ -12,17 +15,17 @@
             </tr>
             <tr *ngFor="let item of files">
                 <td class="start">
-                    {{item.file_name}}
+                    {{item.file_name}}.pdf
                 </td>
                 <td class="next">
-                    {{item.upload_time | date:'yyyy-MM-dd'}}
+                    {{item.upload_time | date:'yyyy-MM-dd h:mm:ss'}}
                 </td>
                 <td class="end">
                     {{item.upload_username}}
                 </td>
                 <td class="end2">
-                    <a (click)="download(item.file_id)"><i class="pi pi-pencil"></i>下载</a>
-                    <a (click)="delete_file(item.file_id)" *ngIf="sid == item.upload_userId"><i class="pi pi-pencil"></i>删除</a>
+                    <a (click)="download(item.file_id, item.file_name)"><i class="pi pi-download"></i>下载</a>|
+                    <a (click)="delete_file(item.file_id)" *ngIf="sid == item.upload_userId"><i class="pi pi-times-circle"></i>删除</a>
                 </td>
             </tr>
            
@@ -49,6 +52,7 @@
             </ul>
         </ng-template>
     </p-fileUpload>
+
  </div>
 
 </div>

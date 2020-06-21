@@ -9,7 +9,7 @@ import {AuthGuardService} from './services/auth-guard.service'
 import {LayoutComponent} from './views/layout/layout.component'
 import {CoursesComponent} from './views/courses/courses.component'
 import {UserComponent} from './views/user/user.component'
-import {SidebarComponent} from './shared/sidebar/sidebar.component'
+
 
 
 import { UserInfoComponent } from './views/user/user-info/user-info.component'
@@ -69,22 +69,8 @@ const routes: Routes = [
     path:'login',
     component: LoginComponent
   },
-  // {
-  //   path: 'scourses',
-  //   component: LayoutComponent,
-  //   canActivate: [AuthGuardService],
-  //   children:[
-  //     {
-  //       path: '',
-  //       component: CoursesComponent
-  //     },
-  //   ]
 
-  // },
-  {
-    path: 'test',
-    component: SidebarComponent
-  },
+
   {
     path:"adminhome",
     component: AdminComponent,

@@ -27,10 +27,11 @@ export class StudentComponent implements OnInit {
 
   getC(){
     this.httpRequest.httpGet("course_basic_info", {"course_id":this.course_id}).subscribe((val:any)=>{
-      if (val.message == "failure"){
-        //失败
-      }else{
+      if (val.message == undefined){
         this.cname = val.course_name;
+     
+      }else{
+        
       }
     })
 

@@ -12,9 +12,19 @@
             <p-card  header={{i.course_name}} subheader={{i.teacher_name}} [style]="{width: '350px'}"
                 styleClass="ui-card-shadow">
                 <p-header>
-                    <img src="Card" src="http://118.190.235.55/{{i.background_image}}">
+                    <img src="Card" src="http://118.190.235.55/{{i.background_image}}" style="width:350px;height: 200px;">
                 </p-header>
-                <div>{{i.description}}
+                <div style="
+                                          width:330px;
+                
+                                overflow:hidden;
+                
+                                white-space: nowrap;
+                
+                                text-overflow: ellipsis;
+                
+                                -o-text-overflow:ellipsis;">{{i.description}}
+                
                 </div>
                 <div>
                     {{i.start_time | date:'yyyy-MM-dd'}} ----{{i.end_time | date:'yyyy-MM-dd'}}

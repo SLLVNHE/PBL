@@ -1,8 +1,11 @@
 <div class="content">
     <div class="title"><span><i class="pi pi-fw pi-tags"></i>小组成员</span></div>
-    <div>
-
-
+    <div class="noc" *ngIf="leader.length <= 0 && member.length <= 0">
+        <span id="noc"><i class="pi pi-exclamation-circle"></i>暂无成员</span>
+    </div>
+    
+    
+    <div *ngIf="leader.length > 0 || member.length > 0">
         <table>
             <tr id="start">
                 <th class="start">姓名</th>

@@ -40,7 +40,7 @@ export class NavbarComponent implements OnInit {
 
   getUserInfo() {
     this.httpRequest.httpGet("view_personal_info", {}).subscribe((val: any) => {
-      console.log(val)
+      
       if (val.message == 'success') {
         
         this.email = val.email;
@@ -78,15 +78,7 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  // getUserAvatar() {
-  //   this.httpRequest.httpGetFile("view_avatar", {}, "arraybuffer").subscribe((val:any)=>{
-  //     var blob = new Blob([val], { type: "image/jpeg" });
-  //     this.image = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob));
-    
 
-  //   })
-
-  // }
 
 
   getmessages(){

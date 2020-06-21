@@ -30,16 +30,15 @@ export class CDetailsComponent implements OnInit {
 
   getC() {
     this.httpRequest.httpGet("course_basic_info", { "course_id": this.course_id }).subscribe((val: any) => {
-      if (val.message == "failure") {
-        //失败
-       
-      } else {
-        console.log(val)
+      if (val.message == undefined) {
+      
         this.cname = val.course_name;
         this.cdescription = val.description;
         this.cteacher_name = val.teacher_name;
         this.cstart_time = val.start_time;
         this.cend_time = val.end_time;
+      } else {
+       
       }
     })
 

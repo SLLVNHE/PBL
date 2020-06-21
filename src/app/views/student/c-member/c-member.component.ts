@@ -31,19 +31,22 @@ export class CMemberComponent implements OnInit {
 
   getC() {
     this.httpRequest.httpGet("course_basic_info", { "course_id": this.course_id }).subscribe((val: any) => {
-      if (val.message == "failure") {
-      } else {
+      if (val.message == undefined) { 
         this.cname = val.course_name;
-        this.cteacher_name = val.teacher_name;       
+        this.cteacher_name = val.teacher_name;  
+      } else {
+            
       }
     })
   }
 
   getmember(){
     this.httpRequest.httpGet("course_students", { "course_id": this.course_id }).subscribe((val: any) => {
-      if (val.message == "failure") {
+      if (val.message == undefined) {
+       this.member = val.students;
       
-        this.position = "top";
+      } else {  
+          this.position = "top";
         this.confirmationService.confirm({
           message: '刷新失败，请重试！',
           header: '提示',
@@ -53,9 +56,7 @@ export class CMemberComponent implements OnInit {
           rejectVisible: false,
           key: "positionDialog"
         });
-      } else {  
-        console.log(val);
-        this.member = val.students;
+       
       }
     })
   }

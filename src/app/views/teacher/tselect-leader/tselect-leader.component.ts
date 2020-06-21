@@ -16,6 +16,9 @@ export class TselectLeaderComponent implements OnInit {
   public leader: any[] = [];
   public member: any[] = [];
   public position: any;
+  length1:any;
+  length2:any;
+  cid:any;
 
 
 
@@ -26,6 +29,7 @@ export class TselectLeaderComponent implements OnInit {
   ) {
     activatedRoute.queryParams.subscribe(queryParams => {
       this.pid = queryParams.pid;
+      this.cid = queryParams.cid;
     });
 
   }
@@ -44,6 +48,7 @@ export class TselectLeaderComponent implements OnInit {
           rejectVisible: false,
           key: "positionDialog"
         });
+        this.getmember();
       } else {
         this.position = "top";
         this.confirmationService.confirm({
@@ -61,9 +66,10 @@ export class TselectLeaderComponent implements OnInit {
 
   getp() {
     this.httpRequest.httpGet("project_basic_info", { "project_id": this.pid }).subscribe((val: any) => {
-      if (val.message == "failure") {
-      } else {
+      if (val.message == undefined) {  
         this.pname = val.project_name;
+      } else {
+      
 
       }
     })
@@ -71,8 +77,15 @@ export class TselectLeaderComponent implements OnInit {
 
   getmember() {
     this.httpRequest.httpGet("group_members", { "project_id": this.pid }).subscribe((val: any) => {
-      if (val.message == "failure") {
-        this.position = "top";
+     
+      if (val.message == undefined) {  
+        this.member = val.others;
+        this.leader = val.group_leaders;
+        this.length1 = this.member.length;
+        this.length2 = this.leader.length;
+       
+      } else {
+       this.position = "top";
         this.confirmationService.confirm({
           message: '刷新失败，请重试！',
           header: '提示',
@@ -82,9 +95,6 @@ export class TselectLeaderComponent implements OnInit {
           rejectVisible: false,
           key: "positionDialog"
         });
-      } else {
-        this.member = val.others;
-        this.leader = val.group_leader;
       }
     })
   }
@@ -94,6 +104,7 @@ export class TselectLeaderComponent implements OnInit {
   ngOnInit(): void {
 
     this.getmember();
+    this.getp();
   }
 
 }

@@ -16,6 +16,7 @@ export class PMemberComponent implements OnInit {
   public leader:any[]=[];
   public member: any[] = [];
   public position: any;
+  cid:any;
 
 
 
@@ -26,15 +27,17 @@ export class PMemberComponent implements OnInit {
   ) {
     activatedRoute.queryParams.subscribe(queryParams => {
       this.pid = queryParams.pid;
+      this.cid = queryParams.cid;
     });
 
   }
 
   getp() {
     this.httpRequest.httpGet("project_basic_info", { "project_id": this.pid }).subscribe((val: any) => {
-      if (val.message == "failure") {
-      } else {
+      if (val.message == undefined) {  
         this.pname = val.project_name;
+      } else {
+      
        
       }
     })
@@ -42,7 +45,11 @@ export class PMemberComponent implements OnInit {
 
   getmember() {
     this.httpRequest.httpGet("group_members", { "project_id": this.pid }).subscribe((val: any) => {
-      if (val.message == "failure") {
+      if (val.message == undefined) {
+         this.member = val.others;
+        this.leader = val.group_leaders;
+      
+      } else {
         this.position = "top";
         this.confirmationService.confirm({
           message: '刷新失败，请重试！',
@@ -53,9 +60,6 @@ export class PMemberComponent implements OnInit {
           rejectVisible: false,
           key: "positionDialog"
         });
-      } else {
-        this.member = val.others;
-        this.leader = val.group_leader;
       }
     })
   }
@@ -65,6 +69,7 @@ export class PMemberComponent implements OnInit {
   ngOnInit(): void {
    
     this.getmember();
+    this.getp();
   }
 
 

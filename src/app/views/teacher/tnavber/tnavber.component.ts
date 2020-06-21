@@ -38,7 +38,7 @@ export class TnavberComponent implements OnInit {
 
   getUserInfo() {
     this.httpRequest.httpGet("view_personal_info", {}).subscribe((val: any) => {
-      console.log(val)
+   
       if (val.message == 'success') {
 
         this.email = val.email;

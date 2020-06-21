@@ -5,6 +5,7 @@ import { ConfirmationService } from 'primeng/api';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { DomSanitizer } from '@angular/platform-browser';
 
+
 @Component({
   selector: 'app-see-message',
   templateUrl: './see-message.component.html',
@@ -19,7 +20,7 @@ export class SeeMessageComponent implements OnInit {
   public pname:any;
   public tname:any;
   public time:any;
-  
+  isread:any
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,27 +30,38 @@ export class SeeMessageComponent implements OnInit {
     activatedRoute.queryParams.subscribe(queryParams => {
       this.uid = queryParams.uid;
       this.tid = queryParams.tid;
+      this.isread = queryParams.isRead;
+
     });
+   
+    this.getmessages();
   }
 
 
   getmessages() {
     this.httpRequest.httpGet("read_message", { "superviseUserId": this.uid, "task_id":this.tid}).subscribe((val: any) => {
-      if (val.message == "failure") {
-      
-      } else {
+      if (val.message == undefined) {
         this.name = val.superviseUserName;
         this.cname = val.courseName;
         this.pname = val.projectName;
         this.tname = val.taskName;
-        this.time = val.tiem;
+        this.time = val.time;
+        
+      } else {
+      
      
       }
 
     })
   }
 
+  read(){
+    location.reload()
+    
+  }
+
   ngOnInit(): void {
+  
   }
 
 }

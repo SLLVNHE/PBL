@@ -1,10 +1,11 @@
 .content {
-   position:relative;
+  
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 100%;
     height: auto;
+    min-width: 65em;
     min-height: 600px;
     margin-bottom: 2em;
 
@@ -55,23 +56,31 @@ table tr th, table tr td{
 }
 
 .start{
-    width: 15em;
+    width: 25em;
    
 }
 
 .next{
-     width: 30em;
+     width: 15em;
     
 }
 .end{
-     width: 14em; 
+     width: 10em; 
 }
 .end2{
-     width: 6em;
+     width: 15em;
 }
 
 .filebox{
   width: 100%;
-  position: absolute;
+ margin-top: 20em;
   bottom: 2em;
+}
+
+.noc{
+    padding-left: 3em;
+    padding-top: 2em;
+    line-height: 37px;
+    font-size: 18px;
+    
 }

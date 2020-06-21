@@ -24,7 +24,8 @@ export class UserPasswordComponent implements OnInit {
   public divH22: boolean = false;
   public content = "验证身份";
   public email :any;
-
+  public p1: any
+  public p2: any;
 
   public form1: FormGroup;
   public form2: FormGroup;
@@ -110,7 +111,7 @@ export class UserPasswordComponent implements OnInit {
       'email': this.email
     };
     this.httpRequest.httpGet("forget_email", dates).subscribe((val: any) => {
-      console.log(val)
+      
       if (val.message == "send successfuly") {
         //发送成功
         this.position = position;
@@ -161,7 +162,35 @@ export class UserPasswordComponent implements OnInit {
           key: "positionDialog"
         });
       }
-    })
+    },
+      error => {
+
+        if (error.error.message == "send failed") {
+          this.position = "top";
+          this.confirmationService.confirm({
+            message: "发送失败，请重试！",
+            header: '提示',
+            icon: 'pi pi-info-circle',
+            //  acceptVisible:false,
+            acceptLabel: '确认',
+            rejectVisible: false,
+            key: "positionDialog"
+          });
+
+        } else if (error.error.message == "Operate too frequently") {
+          this.confirmationService.confirm({
+            message: '操作过于频繁（一个邮箱一分钟只能发一次）！',
+            header: '提示',
+            icon: 'pi pi-info-circle',
+            //  acceptVisible:false,
+            acceptLabel: '确认',
+            rejectVisible: false,
+            key: "positionDialog"
+          });
+        }
+
+      },
+    )
 
     let number = 60;
     this.disabled = true;
@@ -245,7 +274,35 @@ export class UserPasswordComponent implements OnInit {
         });
 
       }
-    })
+    },
+     error => {
+
+        if (error.error.message == "incorrect old password") {
+          this.position = "top";
+          this.confirmationService.confirm({
+            message: "密码错误，请重试！",
+            header: '提示',
+            icon: 'pi pi-info-circle',
+            //  acceptVisible:false,
+            acceptLabel: '确认',
+            rejectVisible: false,
+            key: "positionDialog"
+          });
+
+        } else if (error.error.message == "param error") {
+          this.confirmationService.confirm({
+            message: '参数不完整，请重试！',
+            header: '提示',
+            icon: 'pi pi-info-circle',
+            //  acceptVisible:false,
+            acceptLabel: '确认',
+            rejectVisible: false,
+            key: "positionDialog"
+          });
+        }
+
+      },
+    )
     
 
   }

@@ -17,12 +17,8 @@ export class HttpRequestService {
    ) { }
   public httpOptions;
   public headers: HttpHeaders;
-  // BaseUrl:string = "http://127.0.0.1:3000/";
-
-  // BaseUrl: string =  "http://118.190.235.55:8080/";
   public api = '/api/';
   
-
   httpGet(url,dates){
 
     if (localStorage.getItem("token") != null) {
@@ -74,62 +70,16 @@ httpPost(url, data){
   httpPostFile(url, data) {
 
     if (localStorage.getItem("token") != null) {
-      this.headers = new HttpHeaders({ 'Authorization': localStorage.getItem("token"), 'Content-Type': 'undefined' })
+      this.headers = new HttpHeaders({ 'Authorization': localStorage.getItem("token")})
     }
     else {
-      this.headers = new HttpHeaders({ 'Content-Type': 'undefined' })
+      
     }
     this.httpOptions = {
       headers: this.headers
     };
     return this.httpClient.post(this.api + url, data, this.httpOptions)
   }
-
-
-
-  // public email: any;
-  // public nickname: any;
-  // public name: any;
-  // public gender: any;
-  // public signature: any;
-  // public birthday: any;
-  // val1: any;
-  // position: string;
-  // infoList :any={};
-  // getUserInfo():any {
-  //   this.httpGet("view_personal_info", {}).subscribe((val: any) => {
-  //     if (val.message == 'success') {
-  //       console.log(val)
-  //       this.infoList.email = val.email;
-  //       this.infoList.name = val.name;
-  //       this.infoList.nickname = val.nickname;
-  //       this.infoList.gender = val.gender; 
-  //       this.infoList.signature = val.signature;
-  //       this.infoList.birthday = val.birthday;
-  //       console.log(this.infoList)
-  //       return this.infoList;
-  //     } else {
-  //     return this.infoList;
-  //     }
-  //   })
-  // }
-
-  // getUserAvatar(): any {
-  //   this.httpGet("view_avatar", {}).subscribe((val: any) => {
-  //     if (val.message == 'success') {
-
-  //       return this.infoList;
-  //     } else {
-  //       return this.infoList;
-  //     }
-  //   })
-  // }
-
-
-
-
- 
-
 
 }
 

@@ -11,6 +11,7 @@ import { Router, NavigationExtras } from '@angular/router'
 export class StudentComponent implements OnInit {
   public course_id:any;
   public cname:any;
+  
 
 
 
@@ -29,6 +30,7 @@ export class StudentComponent implements OnInit {
     this.httpRequest.httpGet("course_basic_info", {"course_id":this.course_id}).subscribe((val:any)=>{
       if (val.message == undefined){
         this.cname = val.course_name;
+
      
       }else{
         

@@ -26,7 +26,7 @@
     "@fullcalendar/daygrid": "^4.4.2",
     "@fullcalendar/interaction": "^4.4.2",
     "@fullcalendar/timegrid": "^4.4.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "font-awesome": "^4.7.0",
     "js-cookie": "^2.2.1",
     "primeicons": "^3.0.0-rc.1",
